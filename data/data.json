@@ -1,0 +1,93 @@
+[
+    {
+        "id": 9,
+        "species": "cat",
+        "price": 600,
+        "gender": "female",
+        "weight": 0.3,
+        "birth_date": 1575842400000,
+        "color": "gray",
+        "breed": "british shorthair",
+        "image": "",
+        "is_sterile": false,
+        "hair": "short"
+    },
+    {
+        "id": 10,
+        "species": "cat",
+        "price": 600,
+        "gender": "male",
+        "weight": 0.3,
+        "birth_date": 1575842400000,
+        "color": "gray",
+        "breed": "british shorthair",
+        "image": "",
+        "is_sterile": false,
+        "hair": "short"
+    },
+    {
+        "id": 11,
+        "species": "dog",
+        "price": 800,
+        "gender": "female",
+        "weight": 3,
+        "birth_date": 1544047200000,
+        "color": "orange",
+        "breed": "labrador",
+        "image": "",
+        "is_sterile": true,
+        "hair": "short"
+    },
+    {
+        "id": 12,
+        "species": "dog",
+        "price": 1000,
+        "gender": "male",
+        "weight": 2,
+        "birth_date": 1544047200000,
+        "color": "black",
+        "breed": "labrador",
+        "image": "",
+        "is_sterile": false,
+        "hair": "short"
+    },
+    {
+        "id": 25,
+        "species": "fish",
+        "price": 60,
+        "gender": "male",
+        "weight": 0.01,
+        "birth_date": 1554843600000,
+        "color": "red-black",
+        "breed": "red rasbora",
+        "image": "",
+        "water_type": "limnetic",
+        "temper": "peacefull"
+    },
+    {
+        "id": 26,
+        "species": "fish",
+        "price": 60,
+        "gender": "female",
+        "weight": 0.01,
+        "birth_date": 1554843600000,
+        "color": "red",
+        "breed": "red rasbora",
+        "image": "",
+        "water_type": "limnetic",
+        "temper": "peacefull"
+    },
+    {
+        "id": 37,
+        "species": "bird",
+        "price": 500,
+        "gender": "female",
+        "weight": 0.15,
+        "birth_date": 1570741200000,
+        "color": "gray",
+        "breed": "diamond",
+        "image": "",
+        "type": "dove",
+        "activity": "day"
+    }
+]
