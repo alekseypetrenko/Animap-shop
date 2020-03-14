@@ -5,10 +5,10 @@ export class AnimalController {
     constructor() {
         this.view = new AnimalView();
         this.model = new AnimalModel(this.handleLoadedAnimals);
-        this.model.getAnimals(); 
+        this.model.getAnimals();
     }
-
-
+    
+    
     handleLoadedAnimals = arr => {
         this.view.renderAnimals(arr);
     }
