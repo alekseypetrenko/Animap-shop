@@ -12,7 +12,7 @@ export class AnimalView {
         return `
             <div class="card col mb-4">
                 <div class="card">
-                    <img src="${el.image}" alt="Photo">
+                    <img src="${el.image}" alt="Photo" class="center">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">${el.breed}</li>
                         <li class="list-group-item">${el.species} ${el.gender}</li>
