@@ -11,9 +11,48 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">ZooMarket</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Fishes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Birds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Raccoons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Mice</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Elephant</a>
+          </li>
+        </ul>
+        </div>
+        <form class="form-inline search" action="/action_page.php">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+        
+    </nav>
+        
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 info-animals">
     </div>
+
     <script src="./app/main.js" type="module"></script>
+
 </body>
 
 </html>

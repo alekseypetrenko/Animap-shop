@@ -33,4 +33,5 @@ export class AnimalModel {
             yearsAge, monthsAge, daysAge
         }
     }
+
 }
