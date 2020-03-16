@@ -34,4 +34,9 @@ export class AnimalModel {
         }
     }
 
+    filteredItems(str) {
+        const reg = new RegExp(str, "i");
+        return this.animals.filter(({ breed }) => reg.test(breed));
+    }
+
 }
