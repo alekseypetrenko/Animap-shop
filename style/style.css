@@ -10,3 +10,23 @@ img.center {
     width: 100%;
     height: 250px;
   }
+
+.btn-outline-secondary,
+.btn-outline-info {
+    width: 48%;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-outline-info {
+    margin-left: 0;
+}
+
+li:first-child {
+    font-weight: bold;
+}
+
+li:not(:first-child) {
+    color: gray;
+}

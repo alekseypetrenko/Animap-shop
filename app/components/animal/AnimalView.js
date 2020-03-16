@@ -20,8 +20,8 @@ export class AnimalView {
                     </ul>
                 </div>
                 <div class="card-body">
-                    <a href="#" class="btn btn-outline-secondary btn-sm">Add to cart</a>
-                    <a href="#" class="btn btn-outline-info btn-sm">Details</a>
+                    <a href="#" class="btn btn-outline-secondary">Add to cart</a>
+                    <a href="#" class="btn btn-outline-info">Details</a>
                 </div>
             </div>`
     }
@@ -29,47 +29,10 @@ export class AnimalView {
     convertDate(el) {
         let diff = Date.now() - el.birth_date;
         let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        let daysAge;
-        let yearsAge;
-        let monthsAge;
-        let age;
-
-        yearsAge = Math.floor(days / 365);
-
-        if (yearsAge >= 1 && (days % 365) < 30) {
-            daysAge = days % 365;
-            age = `Age: ${yearsAge} years ${daysAge} days`;
-        }
-
-        if (yearsAge >= 1 && (days % 365) > 30) {
-            monthsAge = Math.floor((days % 365) / 30);
-            daysAge = Math.floor((days % 365) % 30);
-            age = `Age: ${yearsAge} years ${monthsAge} months ${daysAge} days`;
-        }
-
-        if (yearsAge < 1 && (days % 365) > 30) {
-            monthsAge = Math.floor((days % 365) / 30);
-            daysAge = Math.floor((days % 365) % 30);
-            age = `Age: ${monthsAge} months ${daysAge} days`;
-        }
-
-        if (yearsAge < 1 && (days % 365) < 30) {
-            daysAge = days % 365;
-            age = `Age: ${daysAge} days`;
-        }
-        if (yearsAge >= 1 && (days % 365) === 0) {
-            age = `Age: ${yearsAge} years`;
-        }
-
-        if (yearsAge >= 1 && ((days % 365) > 30) && ((days % 365) % 30) === 0) {
-            monthsAge = Math.floor((days % 365) / 30);
-            age = `Age: ${yearsAge} years ${monthsAge} months`;
-        }
-
-        if (yearsAge < 1 && ((days % 365) > 30) && ((days % 365) % 30) === 0) {
-            monthsAge = Math.floor((days % 365) / 30);
-            age = `Age: ${monthsAge} months`;
-        }
-        return age;
+        let yearsAge = Math.floor(days / 365);
+        let monthsAge = Math.floor((days % 365) / 30);
+        let daysAge = Math.floor((days % 365) - monthsAge * 30);
+       
+        return `Age: ${yearsAge < 1? '': yearsAge + "years "}${monthsAge < 1? '': monthsAge + "months "}${daysAge < 1? '': daysAge + "days "} `;
     }
 }
