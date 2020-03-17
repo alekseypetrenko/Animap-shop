@@ -2,10 +2,14 @@ import { AnimalView } from "./AnimalView.js";
 import { AnimalModel } from "./AnimalModel.js";
 
 export class AnimalController {
-    constructor() {
+    constructor({subscribe}) {
         this.view = new AnimalView();
         this.model = new AnimalModel(this.handleLoadedAnimals);
         this.model.getAnimals();
+
+        this.subscribe = subscribe;
+        this.subscribe("search", this.search);
+        this.subscribe("filter", this.filter);
     }
 
     handleLoadedAnimals = arr => {
