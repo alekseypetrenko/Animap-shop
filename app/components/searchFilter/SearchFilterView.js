@@ -2,7 +2,7 @@ export class SearchFilterView {
     constructor(listener, filterCb) {
         this.input = document.querySelector(".breed-search");
         this.input.addEventListener("input", listener);
-        this.nav = document.querySelectorAll(".nav-link");
+        this.nav = document.querySelectorAll(".link-species");
         this.cbFilter = filterCb;
         this.filter();
     }
