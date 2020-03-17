@@ -12,8 +12,13 @@ export class AnimalController {
         this.view.renderAnimals(arr);
     }
 
-    searchWithFilter = (str) => {
-        const data = this.model.filteredItems(str);
+    search = (str) => {
+        const data = this.model.searchWithFilter(str, "search");
+        this.view.renderAnimals(data);
+    }
+
+    filter = (str) => {
+        const data = this.model.searchWithFilter(str, "filter");
         this.view.renderAnimals(data);
     }
 }

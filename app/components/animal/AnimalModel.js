@@ -34,9 +34,9 @@ export class AnimalModel {
         }
     }
 
-    filteredItems(str) {
+    searchWithFilter(str, type) {
         const reg = new RegExp(str, "i");
-        return this.animals.filter(({ breed }) => reg.test(breed));
+        return this.animals.filter(({ breed, species }) => reg.test(type === "search" ? breed : species));
     }
 
 }
