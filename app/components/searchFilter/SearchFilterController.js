@@ -16,6 +16,6 @@ export class SearchFilterController {
         const species = el.target.text;
         console.log(species);
         
-        this.filter(this.view.filter(species))
+        this.filter((species))
     }
 }
