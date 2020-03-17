@@ -1,21 +1,17 @@
 import { SearchFilterView } from "./SearchFilterView.js";
 
 export class SearchFilterController {
-    constructor(searchFromAnimalController, filterFromAnimalController) {
+    constructor({notify}) {
         this.view = new SearchFilterView(this.handleSearch, this.handleFilter);
-        this.search = searchFromAnimalController;
-        this.filter = filterFromAnimalController;
+        this.notify = notify;
     }
 
     handleSearch = () => {
-        this.search(this.view.searchValue);
+        this.notify("search", this.view.searchValue);
     }
 
     handleFilter = (el) => {
-        
         const species = el.target.text;
-        console.log(species);
-        
-        this.filter(this.view.filter(species))
+        this.notify("filter", species);
     }
 }

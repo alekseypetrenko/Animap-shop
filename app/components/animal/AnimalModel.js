@@ -39,4 +39,19 @@ export class AnimalModel {
         return this.animals.filter(({ breed, species }) => reg.test(type === "search" ? breed : species));
     }
 
+    sortByType(type) {
+        if (type === "price ascending") {
+            return this.animals.sort((a, b) => a.price - b.price);
+        }
+        if (type === "price descending") {
+            return this.animals.sort((a, b) => b.price - a.price);
+        }
+        if (type === "age ascending") {
+            return this.animals.sort((a, b) => a.age - b.age);
+        }
+        if (type === "age descending") {
+            return this.animals.sort((a, b) => b.age - a.age);
+        }
+    }
+
 }
