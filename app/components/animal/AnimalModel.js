@@ -36,7 +36,9 @@ export class AnimalModel {
 
     searchWithFilter(str, type) {
         const reg = new RegExp(str, "i");
-        return this.animals.filter(({ breed, species }) => reg.test(type === "search" ? breed : species));
+        return this.animals.filter(({ breed, species }) => {
+            return reg.test(type === "search" ? breed : species);
+        });
     }
 
     sortByType(type) {
@@ -47,10 +49,10 @@ export class AnimalModel {
             return this.animals.sort((a, b) => b.price - a.price);
         }
         if (type === "age ascending") {
-            return this.animals.sort((a, b) => a.age - b.age);
+            return this.animals.sort((a, b) => b.birth_date - a.birth_date);
         }
         if (type === "age descending") {
-            return this.animals.sort((a, b) => b.age - a.age);
+            return this.animals.sort((a, b) => a.birth_date - b.birth_date);
         }
     }
 
