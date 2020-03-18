@@ -1,6 +1,7 @@
 export class AnimalView {
     constructor() {
         this.info = document.querySelector(".info-animals");
+        this.logo = document.querySelector(".navbar-brand");
     }
 
     renderAnimals(arr) {

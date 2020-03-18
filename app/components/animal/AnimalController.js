@@ -6,7 +6,7 @@ export class AnimalController {
         this.view = new AnimalView();
         this.model = new AnimalModel(this.handleLoadedAnimals);
         this.model.getAnimals();
-
+        //this.clickLogo();
         this.subscribe = subscribe;
         this.subscribe("search", this.search);
         this.subscribe("filter", this.filter);
@@ -15,6 +15,11 @@ export class AnimalController {
 
     handleLoadedAnimals = arr => {
         this.view.renderAnimals(arr);
+    }
+
+    clickLogo = (arr) => {
+        const data = this.model.searchWithFilter("zoo", "filter");
+        this.view.renderAnimals(data);
     }
 
     search = (str) => {
