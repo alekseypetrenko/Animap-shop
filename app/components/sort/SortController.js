@@ -6,8 +6,9 @@ export class SortController {
         this.notify = notify;
     }
 
-    handleSort = () => {
-        this.notify("sort", this.view.sortValue);
+    handleSort = (el) => {
+        const data = el.target.text;
+        this.notify("sort", data);
     }
 
 }

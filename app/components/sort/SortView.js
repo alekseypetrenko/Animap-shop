@@ -1,11 +1,12 @@
 export class SortView {
     constructor(listener) {
         this.dropdown = document.querySelectorAll(".dropdown-item");
-        this.dropdown.addEventListener("click", listener);
+        this.cbSort = listener;
+        this.sort();
     }
 
-    get sortValue () {
-        return this.dropdown.text;
+    sort(){
+        this.dropdown.forEach(el => el.addEventListener("click", this.cbSort));
     }
 
 
