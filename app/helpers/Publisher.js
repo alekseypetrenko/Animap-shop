@@ -29,10 +29,6 @@ export class Publisher {
     }
 
     unsubscribe = (event, callbackFunc)=>{
-        if(!this.subscribes[event]){
-            this.subscribes[event] = [];
-        }
-
-        this.subscribes[event] = this.subscribes[event].filter(func => func != callbackFunc);
+        this.subscribers[event] = !this.subscribers[event] ? []: this.subscribers[event].filter(func => func != callbackFunc);
     }
 }

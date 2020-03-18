@@ -7,7 +7,7 @@ export class SortController {
     }
 
     handleSort = (el) => {
-        const data = el.target.text;
+        const data = el.target.id;
         this.notify("sort", data);
     }
 

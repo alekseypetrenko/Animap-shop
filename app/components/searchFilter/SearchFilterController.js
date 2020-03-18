@@ -11,7 +11,7 @@ export class SearchFilterController {
     }
 
     handleFilter = (el) => {
-        const species = el.target.text;
+        const species = el.target.id;
         this.notify("filter", species);
     }
 }
