@@ -59,4 +59,5 @@ img.center {
 .pagination-btn:hover {
     transform: scale(1.1);
     color: black;
+    margin-bottom: 20px;
 }
