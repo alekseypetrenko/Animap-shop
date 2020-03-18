@@ -1,6 +1,8 @@
 export class AnimalModel {
     link = "data/data.json"
     animals = [];
+    currentAnimals = [];
+
     constructor(callback) {
         this.handleLoad = callback;
     }
@@ -9,13 +11,15 @@ export class AnimalModel {
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load", () => {
             const animals = JSON.parse(xhr.responseText);
+            
             this.animals = animals.map(el => {
                 const age = this.convertDate(el);
                 return {
                     ...el,
                     age
                 }
-            })
+            });
+            this.currentAnimals = this.animals;
             this.handleLoad(this.animals);
         })
         xhr.open("GET", this.link);
@@ -34,25 +38,45 @@ export class AnimalModel {
         }
     }
 
-    searchWithFilter(str, type) {
+    // searchWithFilter(str, type) {
+    //     const reg = new RegExp(str, "i");
+    //     return this.currentAnimals.filter(({ breed, species }) => {
+    //         return reg.test(type === "search" ? breed : species);
+    //     });
+
+    //     if (id === "All") {
+    //         return this.currentAnimals;
+    //     }
+    // }
+
+    searchWithFilter(str, id, type) {
         const reg = new RegExp(str, "i");
-        return this.animals.filter(({ breed, species }) => {
-            return reg.test(type === "search" ? breed : species);
-        });
+
+        if (type === "search") {
+            return this.currentAnimals.filter(({breed}) => reg.test(breed));
+        }
+
+        if (type === "filter") {
+            if (id === "All") {
+                return this.currentAnimals
+            } else {
+                return this.currentAnimals.filter(({species}) => species === id);
+            }
+        }
     }
 
-    sortByType(type) {
-        if (type === "price ascending") {
-            return this.animals.sort((a, b) => a.price - b.price);
+    sortByType(id) {
+        if (id === "price ascending") {
+            return this.currentAnimals.sort((a, b) => a.price - b.price);
         }
-        if (type === "price descending") {
-            return this.animals.sort((a, b) => b.price - a.price);
+        if (id === "price descending") {
+            return this.currentAnimals.sort((a, b) => b.price - a.price);
         }
-        if (type === "age ascending") {
-            return this.animals.sort((a, b) => b.birth_date - a.birth_date);
+        if (id === "age ascending") {
+            return this.currentAnimals.sort((a, b) => b.birth_date - a.birth_date);
         }
-        if (type === "age descending") {
-            return this.animals.sort((a, b) => a.birth_date - b.birth_date);
+        if (id === "age descending") {
+            return this.currentAnimals.sort((a, b) => a.birth_date - b.birth_date);
         }
     }
 

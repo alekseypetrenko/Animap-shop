@@ -36,3 +36,13 @@ li:not(:first-child) {
     font-weight: bold;
 }
 
+#all-animals {
+    color: #BEF781;
+    font-weight: bold;
+}
+
+#navbarDropdown {
+    color: white;
+    font-weight: normal;
+}
+

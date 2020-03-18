@@ -27,8 +27,8 @@ export class AnimalController {
         this.view.renderAnimals(data);
     }
 
-    sort = (type) => {
-        const data = this.model.sortByType(type);
+    sort = (id) => {
+        const data = this.model.sortByType(id);
         this.view.renderAnimals(data);
     }
 }
