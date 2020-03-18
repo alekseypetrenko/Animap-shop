@@ -1,6 +1,7 @@
 export class AnimalView {
     constructor() {
         this.info = document.querySelector(".info-animals");
+        this.logo = document.querySelector(".navbar-brand");
     }
 
     renderAnimals(arr) {
@@ -17,6 +18,10 @@ export class AnimalView {
                         <li class="list-group-item">${el.species} ${el.gender}</li>
                         <li class="list-group-item">${this.convertedDOB(el)}</li>
                         <li class="list-group-item">Price: ${el.price} UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+
                     </ul>
                     <div><12356</div>
                 </div>
