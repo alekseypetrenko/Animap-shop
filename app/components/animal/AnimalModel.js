@@ -2,6 +2,8 @@ export class AnimalModel {
     link = "data/data.json"
     animals = [];
     currentAnimals = [];
+    paginationCount = 5;
+    paginationPage = 1;
 
     constructor(callback) {
         this.handleLoad = callback;
@@ -11,7 +13,7 @@ export class AnimalModel {
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load", () => {
             const animals = JSON.parse(xhr.responseText);
-            
+            this.currentAnimals = this.animals;
             this.animals = animals.map(el => {
                 const age = this.convertDate(el);
                 return {
@@ -19,7 +21,6 @@ export class AnimalModel {
                     age
                 }
             });
-            this.currentAnimals = this.animals;
             this.handleLoad(this.animals);
         })
         xhr.open("GET", this.link);
@@ -38,31 +39,23 @@ export class AnimalModel {
         }
     }
 
-    // searchWithFilter(str, type) {
-    //     const reg = new RegExp(str, "i");
-    //     return this.currentAnimals.filter(({ breed, species }) => {
-    //         return reg.test(type === "search" ? breed : species);
-    //     });
+    filterBySpecies(id) {
+        if (id === "Clear") {
+            return this.animals;
+        } 
+        
+        else if (id === "All") {
+            this.currentAnimals = this.animals;
+        } else {
+            this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
+        }
 
-    //     if (id === "All") {
-    //         return this.currentAnimals;
-    //     }
-    // }
+        return this.currentAnimals;
+    }
 
-    searchWithFilter(str, id, type) {
+    searchByBreed(str) {
         const reg = new RegExp(str, "i");
-
-        if (type === "search") {
-            return this.currentAnimals.filter(({breed}) => reg.test(breed));
-        }
-
-        if (type === "filter") {
-            if (id === "All") {
-                return this.currentAnimals
-            } else {
-                return this.currentAnimals.filter(({species}) => species === id);
-            }
-        }
+        return this.currentAnimals.filter(({ breed }) => reg.test(breed));
     }
 
     sortByType(id) {
@@ -78,6 +71,25 @@ export class AnimalModel {
         if (id === "age descending") {
             return this.currentAnimals.sort((a, b) => a.birth_date - b.birth_date);
         }
+    }
+
+    getPaginationData(where){
+        switch(where){
+            case 'next':{
+                this.paginationPage = this.currentAnimals.length / this.paginationCount > this.paginationPage? this.paginationPage + 1: 1;
+                break;
+            }
+            case 'prev':{
+                this.paginationPage = this.paginationPage == 1? Math.ceil(this.currentAnimals.length / this.paginationCount): this.paginationPage - 1;
+                break;
+            }
+            default:{
+                this.paginationPage = 1;
+            }
+        }
+        const from = (this.paginationPage - 1) * this.paginationCount;
+        const to = this.paginationPage * this.paginationCount;
+        return this.currentAnimals.slice(from, to);
     }
 
 }

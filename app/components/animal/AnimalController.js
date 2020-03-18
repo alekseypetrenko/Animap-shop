@@ -11,6 +11,7 @@ export class AnimalController {
         this.subscribe("search", this.search);
         this.subscribe("filter", this.filter);
         this.subscribe("sort", this.sort);
+        this.subscribe("panigation", this.panigation);
     }
 
     handleLoadedAnimals = arr => {
@@ -23,17 +24,22 @@ export class AnimalController {
     }
 
     search = (str) => {
-        const data = this.model.searchWithFilter(str, "search");
+        const data = this.model.searchByBreed(str);
         this.view.renderAnimals(data);
     }
 
     filter = (str) => {
-        const data = this.model.searchWithFilter(str, "filter");
+        const data = this.model.filterBySpecies(str);
         this.view.renderAnimals(data);
     }
 
     sort = (id) => {
         const data = this.model.sortByType(id);
+        this.view.renderAnimals(data);
+    }
+
+    panigation = (where = 'next') => {
+        const data = this.model.getPaginationData(where);
         this.view.renderAnimals(data);
     }
 }
