@@ -18,6 +18,10 @@ export class AnimalView {
                         <li class="list-group-item">${el.species} ${el.gender}</li>
                         <li class="list-group-item">${this.convertedDOB(el)}</li>
                         <li class="list-group-item">Price: ${el.price} UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+                        <li class="list-group-item">Price: ertert UAH</li>
+
                     </ul>
                 </div>
                 <div class="card-body">
