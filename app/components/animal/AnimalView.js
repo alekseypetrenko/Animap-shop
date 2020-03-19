@@ -24,7 +24,7 @@ export class AnimalView {
                 </div>
                 <div class="card-body">
                     <a href="#" class="btn btn-outline-secondary">Add to cart</a>
-                    <a href="#" class="btn btn-outline-info">Details</a>
+                    <a href="#" class="btn btn-outline-info"> &#128062;Details</a>
                 </div>
             </div>`
     }

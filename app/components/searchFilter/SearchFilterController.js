@@ -7,11 +7,14 @@ export class SearchFilterController {
     }
 
     handleSearch = () => {
-        this.notify("search", this.view.searchValue);
+        const data = this.view.searchValue;
+        sessionStorage.setItem("search", data);
+        this.notify("search", data);
     }
 
     handleFilter = (el) => {
-        const species = el.target.id;
-        this.notify("filter", species);
+        const data = el.target.id;
+        sessionStorage.setItem("filter", data);
+        this.notify("filter", data);
     }
 }

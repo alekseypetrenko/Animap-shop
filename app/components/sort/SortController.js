@@ -8,6 +8,7 @@ export class SortController {
 
     handleSort = (el) => {
         const data = el.target.id;
+        sessionStorage.setItem("sort", data);
         this.notify("sort", data);
     }
 
