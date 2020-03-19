@@ -19,7 +19,6 @@ export class AnimalView {
                         <li class="list-group-item">${this.convertedDOB(el)}</li>
                         <li class="list-group-item">Price: ${el.price} UAH</li>
                     </ul>
-                    <div><12356</div>
                 </div>
                 <div class="card-body">
                     <a href="#" class="btn btn-outline-secondary">Add to cart</a>

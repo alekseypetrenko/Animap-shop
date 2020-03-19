@@ -2,7 +2,7 @@ export class AnimalModel {
     link = "data/data.json"
     animals = [];
     currentAnimals = [];
-    paginationCount = 5;
+    paginationCount = 12;
     paginationPage = 1;
 
     constructor(callback) {
@@ -21,10 +21,13 @@ export class AnimalModel {
                     age
                 }
             });
+            //this.handleLoad(this.getPaginationData());
             this.handleLoad(this.animals);
+            
         })
         xhr.open("GET", this.link);
         xhr.send();
+        
     }
 
     convertDate(el) {
@@ -41,7 +44,7 @@ export class AnimalModel {
 
     filterBySpecies(id) {
         if (id === "Clear") {
-            return this.animals;
+            this.currentAnimals = this.animals;
         } 
         
         else if (id === "All") {
@@ -50,27 +53,29 @@ export class AnimalModel {
             this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
         }
 
-        return this.currentAnimals;
+        return this.getPaginationData();
     }
 
     searchByBreed(str) {
         const reg = new RegExp(str, "i");
-        return this.currentAnimals.filter(({ breed }) => reg.test(breed));
+        this.currentAnimals = this.currentAnimals.filter(({ breed }) => reg.test(breed));
+        return this.getPaginationData();
     }
 
     sortByType(id) {
         if (id === "price ascending") {
-            return this.currentAnimals.sort((a, b) => a.price - b.price);
+            this.currentAnimals = this.currentAnimals.sort((a, b) => a.price - b.price);
         }
         if (id === "price descending") {
-            return this.currentAnimals.sort((a, b) => b.price - a.price);
+            this.currentAnimals = this.currentAnimals.sort((a, b) => b.price - a.price);
         }
         if (id === "age ascending") {
-            return this.currentAnimals.sort((a, b) => b.birth_date - a.birth_date);
+            this.currentAnimals = this.currentAnimals.sort((a, b) => b.birth_date - a.birth_date);
         }
         if (id === "age descending") {
-            return this.currentAnimals.sort((a, b) => a.birth_date - b.birth_date);
+            this.currentAnimals = this.currentAnimals.sort((a, b) => a.birth_date - b.birth_date);
         }
+        return this.getPaginationData();
     }
 
     getPaginationData(where){

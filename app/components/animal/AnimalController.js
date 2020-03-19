@@ -6,21 +6,16 @@ export class AnimalController {
         this.view = new AnimalView();
         this.model = new AnimalModel(this.handleLoadedAnimals);
         this.model.getAnimals();
-        //this.clickLogo();
+        
         this.subscribe = subscribe;
         this.subscribe("search", this.search);
         this.subscribe("filter", this.filter);
         this.subscribe("sort", this.sort);
-        this.subscribe("panigation", this.panigation);
+        this.subscribe("pagination", this.pagination);
     }
 
     handleLoadedAnimals = arr => {
         this.view.renderAnimals(arr);
-    }
-
-    clickLogo = (arr) => {
-        const data = this.model.searchWithFilter("zoo", "filter");
-        this.view.renderAnimals(data);
     }
 
     search = (str) => {
@@ -38,7 +33,7 @@ export class AnimalController {
         this.view.renderAnimals(data);
     }
 
-    panigation = (where = 'next') => {
+    pagination = (where = 'next') => {
         const data = this.model.getPaginationData(where);
         this.view.renderAnimals(data);
     }
