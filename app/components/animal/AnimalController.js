@@ -15,7 +15,6 @@ export class AnimalController {
     }
 
     handleLoadedAnimals = arr => {
-        this.view.spinner();
         this.view.renderAnimals(arr);
     }
 
@@ -34,7 +33,7 @@ export class AnimalController {
         this.view.renderAnimals(data);
     }
 
-    pagination = (where = 'next') => {
+    pagination = (where) => {
         const data = this.model.getPaginationData(where);
         this.view.renderAnimals(data);
     }

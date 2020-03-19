@@ -21,13 +21,10 @@ export class AnimalModel {
                     age
                 }
             });
-            //this.handleLoad(this.getPaginationData());
             this.handleLoad(this.animals);
-            
         })
         xhr.open("GET", this.link);
         xhr.send();
-        
     }
 
     convertDate(el) {

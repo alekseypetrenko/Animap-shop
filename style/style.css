@@ -53,19 +53,14 @@ img.center {
     
 }
 
-.pagination-menu {
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 80px; 
-}
-
-.pagination-btn {
+.page-link {
+    border-color: gray;
     color: gray;
     transform: scale(0.8); 
+    margin-bottom: 30px;
 }
 
-.pagination-btn:hover {
-    transform: scale(1);
+.page-link:hover {
+    transform: scale(1.1);
     color: black;
 }

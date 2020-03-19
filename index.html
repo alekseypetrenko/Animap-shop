@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZooMarket</title>
+    <title>Bravo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
@@ -13,7 +13,7 @@
 
   <body>
 
-    <header class="page-header d-none">
+    <header class="page-header">
       <div class="spinner-grow text-important" style="position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem; width: 3rem; height: 3rem;" role="status">
         <span class="sr-only">Loading...</span>
       </div>
@@ -76,17 +76,22 @@
       </nav>
   </header>
     
-  <main class="page-main d-none">
+  <main class="page-main">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 info-animals">
     </div>
 
-    <div class="pagination-menu">
-      <button data-id="prev" class="pagination-btn"> &#8666; Previous page </button>
-      <button data-id="next" class="pagination-btn"> Next page &#8667; </button>
-    </div>
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" data-id="prev" href="#"> &lt;&lt;  Previous</a>
+      </li>
+      
+      <li class="page-item">
+        <a class="page-link" data-id="next" href="#">Next  &gt;&gt;</a>
+      </li>
+    </ul>
   </main>
 
-  <footer class="page-footer d-none">
+  <footer class="page-footer">
   </footer>
         
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
