@@ -15,6 +15,7 @@ export class AnimalController {
     }
 
     handleLoadedAnimals = arr => {
+        this.view.spinner();
         this.view.renderAnimals(arr);
     }
 

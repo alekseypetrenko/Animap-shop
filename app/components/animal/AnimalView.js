@@ -1,11 +1,13 @@
 export class AnimalView {
     constructor() {
         this.info = document.querySelector(".info-animals");
-        this.logo = document.querySelector(".navbar-brand");
+        this.logo = document.querySelector(".navbar-brand"); 
+        //this.document = this.document;
     }
 
     renderAnimals(arr) {
         this.info.innerHTML = arr.map(el => this.getAnimal(el)).join("");
+        
     }
 
     getAnimal(el) {
@@ -32,4 +34,13 @@ export class AnimalView {
                      ${el.age.monthsAge < 1 ? "" : el.age.monthsAge + " month "}
                      ${el.age.daysAge < 1 ? "" : el.age.daysAge + " days"}`
     }
+
+    spinner() {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('body > .spinner-grow').classList.add('d-none');
+            document.querySelector('.page-header').classList.remove('d-none');
+            document.querySelector('.page-main').classList.remove('d-none');
+            document.querySelector('.page-footer').classList.remove('d-none');})
+    }
+
 }

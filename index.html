@@ -12,71 +12,82 @@
 </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" id="all-animals" href="#">ZooMarket</a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link link-species" id="All" href="#">All animals</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Cat" href="#">Cats</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Dog" href="#">Dogs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Fish" href="#">Fishes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Bird" href="#">Birds</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Raccoon" href="#">Raccoons</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Mouse" href="#">Mice</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Elephant" href="#">Elephants</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-species" id="Clear" href="#">Clear filter</a>
-          </li>
-        </ul>
+
+    <header class="page-header d-none">
+      <div class="spinner-grow text-important" style="position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem; width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-      
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle sort" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Sort by
-        </a>
-        <div class="filter-items dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" id="price ascending" href="#">price &#9650;</a>
-          <a class="dropdown-item" id="price descending" href="#">price &#9660;</a>
-          <a class="dropdown-item" id="age ascending" href="#">age &#9650;</a>
-          <a class="dropdown-item" id="age descending" href="#">age &#9660;</a>
+
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" id="all-animals" href="#">ZooMarket</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link link-species" id="All" href="#">All animals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Cat" href="#">Cats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Dog" href="#">Dogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Fish" href="#">Fishes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Bird" href="#">Birds</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Raccoon" href="#">Raccoons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Mouse" href="#">Mice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Elephant" href="#">Elephants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-species" id="Clear" href="#">Clear filter</a>
+            </li>
+          </ul>
         </div>
-      </div>
-      
-      <form class="form-inline search" action="/action_page.php">
-        <input class="form-control mr-sm-2 breed-search" type="text" placeholder="Search">
-      </form>
-    </nav>
+        
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle sort" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Sort by
+          </a>
+          <div class="filter-items dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" id="price ascending" href="#">price &#9650;</a>
+            <a class="dropdown-item" id="price descending" href="#">price &#9660;</a>
+            <a class="dropdown-item" id="age ascending" href="#">age &#9650;</a>
+            <a class="dropdown-item" id="age descending" href="#">age &#9660;</a>
+          </div>
+        </div>
+        
+        <form class="form-inline search" action="/action_page.php">
+          <input class="form-control mr-sm-2 breed-search" type="text" placeholder="Search">
+        </form>
+      </nav>
+  </header>
     
+  <main class="page-main d-none">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 info-animals">
     </div>
 
     <div class="pagination-menu">
       <button data-id="prev" class="pagination-btn"> &#8666; Previous page </button>
       <button data-id="next" class="pagination-btn"> Next page &#8667; </button>
-
     </div>
+  </main>
+
+  <footer class="page-footer d-none">
+  </footer>
         
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
