@@ -2,8 +2,9 @@ export class AnimalModel {
     link = "data/data.json"
     animals = [];
     currentAnimals = [];
-    paginationCount = 12;
+    paginationCount = 5;
     paginationPage = 1;
+    animalsCheck = [];
 
     constructor(callback) {
         this.handleLoad = callback;
@@ -13,7 +14,6 @@ export class AnimalModel {
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load", () => {
             const animals = JSON.parse(xhr.responseText);
-            this.currentAnimals = this.animals;
             this.animals = animals.map(el => {
                 const age = this.convertDate(el);
                 return {
@@ -21,6 +21,7 @@ export class AnimalModel {
                     age
                 }
             });
+            this.currentAnimals = this.animals;
             this.handleLoad(this.getPaginationData());
         })
         xhr.open("GET", this.link);
@@ -42,14 +43,14 @@ export class AnimalModel {
     filterBySpecies(id) {
         if (id === "Clear") {
             this.currentAnimals = this.animals;
-        } 
-        
+        }
+
         else if (id === "All") {
             this.currentAnimals = this.animals;
         } else {
             this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
         }
-
+        this.handleSessionStorage(id);
         return this.getPaginationData();
     }
 
@@ -75,17 +76,17 @@ export class AnimalModel {
         return this.getPaginationData();
     }
 
-    getPaginationData(where){
-        switch(where){
-            case 'next':{
-                this.paginationPage = this.currentAnimals.length / this.paginationCount > this.paginationPage? this.paginationPage + 1: 1;
+    getPaginationData(where) {
+        switch (where) {
+            case 'next': {
+                this.paginationPage = this.currentAnimals.length / this.paginationCount > this.paginationPage ? this.paginationPage + 1 : 1;
                 break;
             }
-            case 'prev':{
-                this.paginationPage = this.paginationPage == 1? Math.ceil(this.currentAnimals.length / this.paginationCount): this.paginationPage - 1;
+            case 'prev': {
+                this.paginationPage = this.paginationPage == 1 ? Math.ceil(this.currentAnimals.length / this.paginationCount) : this.paginationPage - 1;
                 break;
             }
-            default:{
+            default: {
                 this.paginationPage = 1;
             }
         }
@@ -94,4 +95,18 @@ export class AnimalModel {
         return this.currentAnimals.slice(from, to);
     }
 
+    handleSessionStorage(key) {
+        let animalsFromStorage = sessionStorage.getItem(key);
+        if (this.animalsCheck) {
+            this.animalsCheck = JSON.parse(animalsFromStorage);
+        } else {
+            this.animalsCheck = this.currentAnimals;
+            this.sync(key);
+        }
+    }
+
+    async sync(key) {
+        let data = JSON.stringify(this.animalsCheck);
+        await sessionStorage.setItem(key, data);
+    }
 }
