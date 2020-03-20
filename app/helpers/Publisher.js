@@ -1,13 +1,13 @@
 export class Publisher {
-    constructor () {
+    constructor() {
         this.subscribes = {};
     }
 
-    get methods () {
+    get methods() {
         return {
             subscribe: this.subscribe,
             notify: this.notify,
-            unsubscribe : this.unsubscribe
+            unsubscribe: this.unsubscribe
         };
 
     }
@@ -20,15 +20,14 @@ export class Publisher {
         this.subscribes[event].push(callbackFunc);
     }
 
-    notify = (event, data)=>{
-        if(!this.subscribes[event]){
+    notify = (event, data) => {
+        if (!this.subscribes[event]) {
             this.subscribes[event] = [];
         }
-        console.log('notify', event, data);
-        this.subscribes[event].forEach(func=>func(data));
+        this.subscribes[event].forEach(func => func(data));
     }
 
-    unsubscribe = (event, callbackFunc)=>{
-        this.subscribers[event] = !this.subscribers[event] ? []: this.subscribers[event].filter(func => func != callbackFunc);
+    unsubscribe = (event, callbackFunc) => {
+        this.subscribers[event] = !this.subscribers[event] ? [] : this.subscribers[event].filter(func => func != callbackFunc);
     }
 }
