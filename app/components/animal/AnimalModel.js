@@ -21,7 +21,7 @@ export class AnimalModel {
                     age
                 }
             });
-            this.handleLoad(this.animals);
+            this.handleLoad(this.getPaginationData());
         })
         xhr.open("GET", this.link);
         xhr.send();
