@@ -1,13 +1,17 @@
 export class AnimalView {
-    constructor() {
+    constructor(listener) {
         this.info = document.querySelector(".info-animals");
-        this.logo = document.querySelector(".navbar-brand"); 
         this.spiner = document.querySelector(".spinner-grow");
+        this.clickListener = listener;
     }
 
-    renderAnimals(arr) {
+    renderAnimals(arr) {       
+        this.info.querySelectorAll(".btn-details").forEach(el => el.removeEventListener("click", this.clickListener));
+
         this.info.innerHTML = arr.map(el => this.getAnimal(el)).join("");
-        this.spiner.classList.add('d-none');
+        this.spiner.classList.add("d-none");
+
+        this.info.querySelectorAll(".btn-details").forEach(el => el.addEventListener("click", this.clickListener));
     }
 
     getAnimal(el) {
@@ -24,7 +28,8 @@ export class AnimalView {
                 </div>
                 <div class="card-body">
                     <a href="#" class="btn btn-outline-secondary">Add to cart</a>
-                    <a href="#" class="btn btn-outline-success"> &#128062;Details</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id="${el.id}">
+                    &#128062;Details</button>
                 </div>
             </div>`
     }
@@ -34,4 +39,12 @@ export class AnimalView {
                      ${el.age.monthsAge < 1 ? "" : el.age.monthsAge + " month "}
                      ${el.age.daysAge < 1 ? "" : el.age.daysAge + " days"}`
     }
+
+    getId(el){
+        return el.target.dataset.id;
+    }
 }
+
+
+
+{/* <a href="#" class="btn btn-outline-success btn-details" data-id="${el.id}"> &#128062;Details</a> */}

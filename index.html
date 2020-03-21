@@ -18,7 +18,7 @@
         <span class="sr-only">Loading...</span>
       </div>
 
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
         <a class="navbar-brand" id="all-animals" href="#">ZooMarket</a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,35 +28,35 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link link-species" id="All" href="#">All animals</a>
+              <a class="nav-link link-species" id="all" href="#">All animals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Cat" href="#">Cats</a>
+              <a class="nav-link link-species" id="cat" href="#">Cats</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Dog" href="#">Dogs</a>
+              <a class="nav-link link-species" id="dog" href="#">Dogs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Fish" href="#">Fishes</a>
+              <a class="nav-link link-species" id="fish" href="#">Fishes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Bird" href="#">Birds</a>
+              <a class="nav-link link-species" id="bird" href="#">Birds</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Raccoon" href="#">Raccoons</a>
+              <a class="nav-link link-species" id="raccoon" href="#">Raccoons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Mouse" href="#">Mice</a>
+              <a class="nav-link link-species" id="mouse" href="#">Mice</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Elephant" href="#">Elephants</a>
+              <a class="nav-link link-species" id="elephant" href="#">Elephants</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-species" id="Clear" href="#">Clear filter</a>
+              <a class="nav-link link-species" id="clear" href="#">Clear filter</a>
             </li>
           </ul>
         </div>
-        
+        <!-- Sort dropdown -->
         <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle sort" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -70,12 +70,14 @@
           </div>
         </div>
         
+        <!-- Search form -->
         <form class="form-inline search" action="/action_page.php">
           <input class="form-control mr-sm-2 breed-search" type="text" placeholder="Search">
         </form>
       </nav>
   </header>
     
+  <!-- Pagination -->
   <main class="page-main">
     <ul class="pagination justify-content-center">
       <li class="page-item">
@@ -86,7 +88,14 @@
         <a class="page-link" data-id="next" href="#">Next  &gt;&gt;</a>
       </li>
     </ul>
+
+    <!-- Render animals -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 info-animals">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered test-modal" role="document"></div>
     </div>
 
   </main>

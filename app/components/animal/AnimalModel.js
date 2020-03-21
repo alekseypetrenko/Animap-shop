@@ -109,4 +109,8 @@ export class AnimalModel {
         let data = JSON.stringify(this.animalsCheck);
         await sessionStorage.setItem(key, data);
     }
+
+    getDetails(id) {
+        return this.currentAnimals.find(el => el.id === +id);
+    }
 }
