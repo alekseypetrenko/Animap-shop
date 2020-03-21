@@ -38,11 +38,6 @@ img.center {
     font-weight: normal;
 }
 
-#Clear {
-    color: black;
-    font-weight: normal;
-}
-
 .navbar-nav .nav-link:active,
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus-within {
@@ -64,3 +59,36 @@ img.center {
     transform: scale(1.1);
     color: black;
 }
+
+.navbar {
+    padding: 15px 30px;
+}
+
+/* Style for basket  */
+.basket-icon {
+    color: white;
+    font-size: 33px;
+}
+
+.basket-container {
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+
+.basket-container:hover { 
+    transform: scale(1.15);
+}
+
+.basket-counter {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background:#04B45F;
+    text-align:center;
+    border-radius:50%;
+    
+}
+
