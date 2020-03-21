@@ -41,11 +41,11 @@ export class AnimalModel {
     }
 
     filterBySpecies(id) {
-        if (id === "Clear") {
+        if (id.toLowerCase() === "clear") {
             this.currentAnimals = this.animals;
         }
 
-        else if (id === "All") {
+        else if (id.toLowerCase() === "all") {
             this.currentAnimals = this.animals;
         } else {
             this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
