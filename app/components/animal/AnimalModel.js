@@ -50,7 +50,7 @@ export class AnimalModel {
         } else {
             this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
         }
-        this.handleSessionStorage(id);
+        //this.handleSessionStorage(id);
         return this.getPaginationData();
     }
 
@@ -95,20 +95,20 @@ export class AnimalModel {
         return this.currentAnimals.slice(from, to);
     }
 
-    handleSessionStorage(key) {
-        let animalsFromStorage = sessionStorage.getItem(key);
-        if (this.animalsCheck) {
-            this.animalsCheck = JSON.parse(animalsFromStorage);
-        } else {
-            this.animalsCheck = this.currentAnimals;
-            this.sync(key);
-        }
-    }
+    // handleSessionStorage(key) {
+    //     let animalsFromStorage = sessionStorage.getItem(key);
+    //     if (this.animalsCheck) {
+    //         this.animalsCheck = JSON.parse(animalsFromStorage);
+    //     } else {
+    //         this.animalsCheck = this.currentAnimals;
+    //         this.sync(key);
+    //     }
+    // }
 
-    async sync(key) {
-        let data = JSON.stringify(this.animalsCheck);
-        await sessionStorage.setItem(key, data);
-    }
+    // async sync(key) {
+    //     let data = JSON.stringify(this.animalsCheck);
+    //     await sessionStorage.setItem(key, data);
+    // }
 
     getDetails(id) {
         return this.currentAnimals.find(el => el.id === +id);

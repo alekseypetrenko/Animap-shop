@@ -40,10 +40,8 @@ export class AnimalController {
         this.view.renderAnimals(data);
     }
 
-    handleClickDetails = (el) => {
-        console.log(el);
-        
-        const data = this.model.getDetails(this.view.getId(el));
+    handleClickDetails = (id) => {
+        const data = this.model.getDetails(id);
         this.notify("show-details", data);
     }
 }
