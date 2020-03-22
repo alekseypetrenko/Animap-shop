@@ -15,10 +15,10 @@ export class AnimalView {
     
     getAnimal(el) {
         const card = document.createElement("div");
-        card.classList.add("card-deck", "col", "mb-4");
+        card.classList.add("card", "col", "mb-4");
         
         card.innerHTML = `
-                <div class="card">
+                <div class="card-deck">
                      <img src="${el.image}" alt="Photo" class="center">
                      <ul class="list-group list-group-flush">
                         <li class="list-group-item">${el.breed}</li>
