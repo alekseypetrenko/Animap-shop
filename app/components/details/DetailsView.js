@@ -1,22 +1,16 @@
 export class DetailsView {
     constructor(closeListener) {
         this.modal = document.querySelector(".modal-details");
-        this.modalBody = document.querySelector(".modal-body")
+        this.modalTitle = document.querySelector(".modal-title")
+        this.modalBody = document.querySelector(".modal-body");
         $(this.modal).on('hidden.bs.modal', closeListener);
     }
 
     show(el) {      
+        this.modalTitle.innerHTML = el.breed;
         const modalBody = `
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">DETAILS</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div>
                 <img src="${el.image}" alt="Photo" class="center">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item list-detail-render"><span>Breed:</span> ${el.breed}</li>
                                 <li class="list-group-item list-detail-render"><span>Species:</span> ${el.species}</li>
                                 <li class="list-group-item list-detail-render"><span>Gender:</span> ${el.gender}</li>
                                 <li class="list-group-item list-detail-render"><span>Date of birth:</span> ${new Date(el.birth_date).getDate()}-${new Date(el.birth_date).getMonth()+1}-${new Date(el.birth_date).getFullYear()}</li>
@@ -38,6 +32,7 @@ export class DetailsView {
     }
 
     close(el){
+        this.modalTitle.innerHTML = "";
         this.modalBody.innerHTML = "";
     }
 }
