@@ -11,8 +11,8 @@ export class DetailsController {
         this.view.show(el);
     }
 
-    closeModal = (e) => {
-        this.view.close(e);
+    closeModal = () => {
+        this.view.close();
     }
 
 }

@@ -1,19 +1,13 @@
 export class DetailsView {
-    constructor() {
-        this.modal = document.querySelector("test-modal");
+    constructor(closeListener) {
+        this.modal = document.querySelector(".modal-details");
+        this.modalBody = document.querySelector(".modal-body")
+        $(this.modal).on('hidden.bs.modal', closeListener);
     }
 
     show(el) {      
-        this.modal.innerHTML = `
-            
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">DETAILS</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+        const modalBody = `
+                <div>
                 <img src="${el.image}" alt="Photo" class="center">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">${el.breed}</li>
@@ -24,20 +18,17 @@ export class DetailsView {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Add to basket</button>
                 </div>
-                </div>
-        
+       
         `;
 
-        return this.modal.innerHTML = `<p>AAAAAAAA</p>`
-        console.log(this.modal);
+        this.modalBody.innerHTML = modalBody;
+        $(this.modal).modal('show');
         
     }
 
     close(el){
-        this.modal.innerHTML = '';
+        this.modalBody.innerHTML = "";
     }
-
-
 }

@@ -5,18 +5,19 @@ export class AnimalView {
         this.clickListener = listener;
     }
 
-    renderAnimals(arr) {       
-        this.info.querySelectorAll(".btn-details").forEach(el => el.removeEventListener("click", this.clickListener));
-
-        this.info.innerHTML = arr.map(el => this.getAnimal(el)).join("");
+    renderAnimals(arr) {
+        this.info.innerHTML = '';
+        arr.forEach(elem => {
+            this.info.appendChild(this.getAnimal(elem));
+        });
         this.spiner.classList.add("d-none");
-
-        this.info.querySelectorAll(".btn-details").forEach(el => el.addEventListener("click", this.clickListener));
-    }
-
+      }
+    
     getAnimal(el) {
-        return `
-            <div class="card col mb-4">
+        const card = document.createElement("div");
+        card.classList.add("card", "col", "mb-4");
+        
+        card.innerHTML = `
                 <div class="card">
                     <img src="${el.image}" alt="Photo" class="center">
                     <ul class="list-group list-group-flush">
@@ -28,10 +29,13 @@ export class AnimalView {
                 </div>
                 <div class="card-body">
                     <a href="#" class="btn btn-outline-secondary">Add to cart</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id="${el.id}">
-                    &#128062;Details</button>
-                </div>
-            </div>`
+                    <a href="#" class="btn btn-primary details-button" data-id="${el.id}">&#128062;Details</a>
+                </div>`      
+        card.querySelector(".details-button").addEventListener("click", ev => {
+            ev.preventDefault();
+            this.clickListener(el.id);
+        } ) 
+        return card;
     }
 
     convertedDOB(el) {
@@ -40,11 +44,5 @@ export class AnimalView {
                      ${el.age.daysAge < 1 ? "" : el.age.daysAge + " days"}`
     }
 
-    getId(el){
-        return el.target.dataset.id;
-    }
 }
 
-
-
-{/* <a href="#" class="btn btn-outline-success btn-details" data-id="${el.id}"> &#128062;Details</a> */}
