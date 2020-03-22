@@ -68,6 +68,10 @@ img.center {
 }
 
 /* Style for basket  */
+.basket:hover {
+    cursor: pointer;
+}
+
 .basket-icon {
     color: white;
     font-size: 33px;
