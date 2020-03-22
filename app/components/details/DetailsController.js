@@ -2,7 +2,7 @@ import { DetailsView } from "./DetailsView.js";
 
 export class DetailsController {
     constructor({ subscribe }) {
-        this.view = new DetailsView(this.closeModal);
+        this.view = new DetailsView();
         this.subscribe = subscribe;
         this.subscribe("show-details", this.showModal);
     }
