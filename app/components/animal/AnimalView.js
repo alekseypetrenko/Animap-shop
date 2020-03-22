@@ -22,16 +22,16 @@ export class AnimalView {
                 <img src="${el.image}" alt="Photo" class="center">
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${el.breed}</li>
-                            <li class="list-group-item">${el.species} ${el.gender}</li>
-                            <li class="list-group-item">${this.convertedDOB(el)}</li>
-                            <li class="list-group-item">Price: ${el.price} UAH</li>
+                            <li class="list-group-item list-main-render">${el.breed}</li>
+                            <li class="list-group-item list-main-render">${el.species} ${el.gender}</li>
+                            <li class="list-group-item list-main-render">${this.convertedDOB(el)}</li>
+                            <li class="list-group-item list-main-render">Price: ${el.price} UAH</li>
                         </ul>
                         <button type="button" class="btn btn-outline-secondary">Add to cart</button>
                         <button type="button" class="btn btn-outline-success details-button" data-id="${el.id}">&#128062;Details</button>
                     </div>
             </div>` 
-                 
+
         card.querySelector(".details-button").addEventListener("click", ev => {
             ev.preventDefault();
             this.clickListener(el.id);

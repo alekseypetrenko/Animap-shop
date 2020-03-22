@@ -95,18 +95,32 @@ img.center {
     
 }
 
-.list-group-item:first-of-type {
+.list-main-render:first-of-type {
     font-weight: bold;
     font-size: 20px;
     color: black;
 }
 
-.list-group-item:nth-of-type(2),
-.list-group-item:nth-of-type(3) {
+.list-main-render-item:nth-of-type(2),
+.list-main-render:nth-of-type(3) {
     color: gray;
 }
 
 .card:hover {
     transform: scale(1.05);   
+    box-shadow: 10px 10px 5px gray;
 }
+
+.list-detail-render{
+    color: gray;
+    text-align: center;
+}
+
+.list-detail-render span {
+    font-weight: bold;
+    color: black;
+}
+
+
+
 

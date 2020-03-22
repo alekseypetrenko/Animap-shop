@@ -55,9 +55,10 @@ export class AnimalModel {
     }
 
     searchByBreed(str) {
+        let searchedAnimals = this.currentAnimals;
         const reg = new RegExp(str, "i");
-        this.currentAnimals = this.currentAnimals.filter(({ breed }) => reg.test(breed));
-        return this.getPaginationData();
+        searchedAnimals = searchedAnimals.filter(({ breed }) => reg.test(breed));
+        return searchedAnimals;
     }
 
     sortByType(id) {
