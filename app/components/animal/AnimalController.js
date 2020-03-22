@@ -3,7 +3,7 @@ import { AnimalModel } from "./AnimalModel.js";
 
 export class AnimalController {
     constructor({ subscribe, notify }) {
-        this.view = new AnimalView(this.handleClickDetails);
+        this.view = new AnimalView(this.handleClickDetails, this.handleAddToCart);
         this.model = new AnimalModel(this.handleLoadedAnimals);
         this.model.getAnimals();
 
@@ -41,7 +41,13 @@ export class AnimalController {
     }
 
     handleClickDetails = (id) => {
-        const data = this.model.getDetails(id);
+        const data = this.model.getAnimalId(id);
         this.notify("show-details", data);
+    }
+
+    handleAddToCart = (id) => {
+        const data = this.model.getAnimalId(id);        
+        this.notify("addto-cart", data);
+        this.model.addAnimalToCart(data);
     }
 }

@@ -5,9 +5,10 @@ export class AnimalModel {
     paginationCount = 12;
     paginationPage = 1;
     animalsCheck = [];
+    cartForStorage = [];
 
-    constructor(callback) {
-        this.handleLoad = callback;
+    constructor(handleLoad) {
+        this.handleLoad = handleLoad;
     }
 
     getAnimals() {
@@ -23,6 +24,8 @@ export class AnimalModel {
             });
             this.currentAnimals = this.animals;
             this.handleLoad(this.getPaginationData());
+            this.checkCartStorage();
+            
         })
         xhr.open("GET", this.link);
         xhr.send();
@@ -96,22 +99,43 @@ export class AnimalModel {
         return this.currentAnimals.slice(from, to);
     }
 
-    // handleSessionStorage(key) {
-    //     let animalsFromStorage = sessionStorage.getItem(key);
-    //     if (this.animalsCheck) {
-    //         this.animalsCheck = JSON.parse(animalsFromStorage);
-    //     } else {
-    //         this.animalsCheck = this.currentAnimals;
-    //         this.sync(key);
-    //     }
-    // }
+    // Save cart
+    saveCart() {
+        sessionStorage.setItem('shoppingCart', JSON.stringify(this.cartForStorage));
+    }
 
-    // async sync(key) {
-    //     let data = JSON.stringify(this.animalsCheck);
-    //     await sessionStorage.setItem(key, data);
-    // }
+    // Load cart
+    loadCart() {
+        this.cartForStorage = JSON.parse(sessionStorage.getItem('shoppingCart'));
+    }
 
-    getDetails(id) {
+    checkCartStorage(){
+        if (sessionStorage.getItem("shoppingCart") != null) {
+            this.loadCart();
+        }
+    }
+
+    addAnimalToCart(data) {
+        console.log(data);
+        this.saveCart();
+
+        for (var item in this.cartForStorage) {
+            if (this.cartForStorage[item].id === data.id) {
+
+                this.cartForStorage[item].count++;
+                this.saveCart();
+                this.checkCartStorage();
+                return;
+            }
+        }
+        this.cartForStorage.push(data);
+        this.saveCart();
+        this.checkCartStorage();
+
+    }
+
+    getAnimalId(id) {
         return this.currentAnimals.find(el => el.id === +id);
     }
+
 }

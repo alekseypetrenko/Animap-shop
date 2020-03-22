@@ -1,8 +1,9 @@
 export class AnimalView {
-    constructor(listener) {
+    constructor(listener, handleAddToCart) {
         this.info = document.querySelector(".info-animals");
         this.spiner = document.querySelector(".spinner-grow");
         this.clickListener = listener;
+        this.handleAddToCart = handleAddToCart;
     }
 
     renderAnimals(arr) {
@@ -27,7 +28,7 @@ export class AnimalView {
                             <li class="list-group-item list-main-render">${this.convertedDOB(el)}</li>
                             <li class="list-group-item list-main-render">Price: ${el.price} UAH</li>
                         </ul>
-                        <button type="button" class="btn btn-outline-secondary">Add to cart</button>
+                        <button type="button" class="btn btn-outline-secondary addto-cart-button data-id=${el.id}">Add to cart</button>
                         <button type="button" class="btn btn-outline-success details-button" data-id="${el.id}">&#128062;Details</button>
                     </div>
             </div>` 
@@ -35,7 +36,11 @@ export class AnimalView {
         card.querySelector(".details-button").addEventListener("click", ev => {
             ev.preventDefault();
             this.clickListener(el.id);
-        } ) 
+        });
+        card.querySelector(".addto-cart-button").addEventListener("click", ev =>{
+            ev.preventDefault();
+            this.handleAddToCart(el.id);
+        })
         return card;
     }
 
