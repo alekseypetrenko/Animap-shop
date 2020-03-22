@@ -2,7 +2,7 @@ export class AnimalModel {
     link = "data/data.json"
     animals = [];
     currentAnimals = [];
-    paginationCount = 5;
+    paginationCount = 12;
     paginationPage = 1;
     animalsCheck = [];
 
