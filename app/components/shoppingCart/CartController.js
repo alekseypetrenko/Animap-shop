@@ -12,8 +12,8 @@ export class CartController {
         this.subscribe("addto-cart", this.addToCart);
     }
 
-    showModal = (arr) => {
-        this.view.showAnimals(arr);
+    showModal = () => {
+        this.view.show();
     }
 
     closeModal = () => {
@@ -41,10 +41,6 @@ export class CartController {
     //     this.view.addToCart(el);
     // }
 
-    // showCart = (el) => {
-    //     this.view.show(el);
-    // }
-
-    
+       
 
 }

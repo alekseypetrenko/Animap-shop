@@ -1,24 +1,29 @@
 export class CartView {
    
-   constructor(closeListener, showListener) {
+   constructor(closeListener, showListener, minusItemListener, plusItemListener, deleteItemListener) {
         this.modal = document.querySelector(".modal-details");
         this.modalTitle = document.querySelector(".modal-title");
         this.modalBody = document.querySelector(".modal-body");
         this.cart = document.querySelector(".cart");
+        this.cartCounter = document.querySelector(".cart-counter");
+        
         this.cart.addEventListener("click", showListener);
         $(this.modal).on('hidden.bs.modal', closeListener);
+        this.minusItemListener = minusItemListener;
+        this.plusItemListener = plusItemListener;
+        this.deleteItemListener = deleteItemListener;
     }
 
-   showAnimals(arr) {
-        this.modal.innerHTML = "";
-        arr.forEach(elem => {
-            this.modal.appendChild(this.showSingleAnimal(elem));
-        });
+    renderCart(data) {
+        this.modalTitle.innerHTML = "Cart";
+        this.modalBody.innerHTML = "";
+        data.forEach(el => {this.modalBody.appendChild(this.renderSingleAnimal(el))});
     }
 
-    showSingleAnimal(el) {
-        this.modalTitle.innerHTML = "Cart"
-        const modalBody = `
+    renderSingleAnimal(el) {
+        const node = document.createElement('div');
+        node.classList.add('cart-item', 'd-flex', 'justify-content-between', 'align-items-center', 'col-12');
+        node.innerHTML = `
             <table class="show-cart table">
                 <tr>
                     <td> 
@@ -47,52 +52,20 @@ export class CartView {
                 <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-outline-secondary">Make order</button>
             </div>
-       
         `;
+        node.querySelector(".minus-item").addEventListener("click", this.minusItemListener);
+        node.querySelector(".plus-item").addEventListener("click", this.plusItemListener);
+        node.querySelector(".delete-item").addEventListener("click", this.deleteItemListener);
 
-        this.modalBody.innerHTML = modalBody;
+        return node;
+    }
+
+    show() {
+        this.renderCart(data);
         $(this.modal).modal('show');
-        
-        // Delete item button
-        $(this.modalBody).on("click", ".delete-item", function(event) {
-            let name = $(this).data('name')
-            shoppingCart.removeItemFromCartAll(name);
-        })
-          
-          
-          // -1
-        $(this.modalBody).on("click", ".minus-item", function(event) {
-            let name = $(this).data('name')
-            shoppingCart.removeItemFromCart(name);
-        })
-          // +1
-          $(this.modalBody).on("click", ".plus-item", function(event) {
-            let name = $(this).data('name')
-            shoppingCart.addItemToCart(name);
-        })
-          
-          // Item count input
-        $(this.modalBody).on("change", ".item-count", function(event) {
-            let name = $(this).data('name');
-            let count = Number($(this).val());
-        shoppingCart.setCountForItem(name, count);
-        });
     }
 
-    totalPrice(el) {
-        let totalPrice = 0;
-        for(let item in cart) {
-            totalPrice += cart[item].price * cart[item].count;
-        }
-        return Number(totalPrice.toFixed(2));
-    }
-
-    addToCart(el){
-        console.log("Click addToCartBtn", el);
-        
-    }
-
-    close(el){
+    close(){
         this.modalTitle.innerHTML = ""
         this.modalBody.innerHTML = "";
     }
