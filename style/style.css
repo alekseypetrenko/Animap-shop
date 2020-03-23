@@ -68,25 +68,25 @@ img.center {
 }
 
 /* Style for basket  */
-.basket:hover {
+.cart:hover {
     cursor: pointer;
 }
 
-.basket-icon {
+.cart-icon {
     color: white;
     font-size: 33px;
 }
 
-.basket-container {
+.cart-container {
     position: relative;
     transition: all .2s ease-in-out;
 }
 
-.basket-container:hover { 
+.cart-container:hover { 
     transform: scale(1.15);
 }
 
-.basket-counter {
+.cart-counter {
     position: absolute;
     top: -10px;
     right: -12px;

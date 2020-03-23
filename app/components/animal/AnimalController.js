@@ -3,7 +3,7 @@ import { AnimalModel } from "./AnimalModel.js";
 
 export class AnimalController {
     constructor({ subscribe, notify }) {
-        this.view = new AnimalView(this.handleClickDetails, this.handleAddToCart);
+        this.view = new AnimalView(this.handleClickDetails, this.handleClickAddToCart);
         this.model = new AnimalModel(this.handleLoadedAnimals);
         this.model.getAnimals();
 
@@ -16,7 +16,7 @@ export class AnimalController {
         this.notify = notify;
     }
 
-    handleLoadedAnimals = arr => {
+    handleLoadedAnimals = (arr) => {
         this.view.renderAnimals(arr);
     }
 
@@ -45,9 +45,13 @@ export class AnimalController {
         this.notify("show-details", data);
     }
 
-    handleAddToCart = (id) => {
-        const data = this.model.getAnimalId(id);        
+    handleClickAddToCart = (id) => {
+        const data = this.model.getAnimalId(id);
         this.notify("addto-cart", data);
-        this.model.addAnimalToCart(data);
+    }
+
+    loadCart = () => {
+        const storage = JSON.parse(sessionStorage.getItem('cart'));
+        this.notify('loadCartFromSessionStorage', storage);
     }
 }
