@@ -22,7 +22,7 @@ export class AnimalModel {
             });
             this.currentAnimals = this.animals;
             this.handleLoad(this.getPaginationData());
-            this.checkCartStorage();
+            // this.checkCartStorage();
             
         })
         xhr.open("GET", this.link);
@@ -95,6 +95,10 @@ export class AnimalModel {
         const from = (this.paginationPage - 1) * this.paginationCount;
         const to = this.paginationPage * this.paginationCount;
         return this.currentAnimals.slice(from, to);
+    }
+
+    getAnimalId(id) {
+        return this.currentAnimals.find(el => el.id === +id);
     }
 
 }
