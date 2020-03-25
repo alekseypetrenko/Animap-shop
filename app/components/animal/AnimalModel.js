@@ -57,6 +57,10 @@ export class AnimalModel {
         let searchedAnimals = [];
         const reg = new RegExp(str, "i");
         searchedAnimals = this.currentAnimals.filter(({ breed }) => reg.test(breed));
+        if (str === "") {
+            searchedAnimals = this.currentAnimals;
+            return this.getPaginationData();
+        } 
         return searchedAnimals;
     }
 
