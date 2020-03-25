@@ -1,8 +1,8 @@
 export class DetailsView {
     constructor(closeListener) {
         this.modal = document.querySelector(".modal-details");
-        this.modalTitle = document.querySelector(".modal-title")
-        this.modalBody = document.querySelector(".modal-body");
+        this.modalTitle = document.querySelector(".modal-title-details")
+        this.modalBody = document.querySelector(".modal-body-details");
         $(this.modal).on('hidden.bs.modal', closeListener);
     }
 
@@ -31,7 +31,7 @@ export class DetailsView {
         
     }
 
-    close(el){
+    close(){
         this.modalTitle.innerHTML = "";
         this.modalBody.innerHTML = "";
     }

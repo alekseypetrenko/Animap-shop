@@ -4,43 +4,46 @@ import { CartModel } from "./CartModel.js";
 export class CartController {
     constructor({ subscribe }) {
         this.view = new CartView(this.showModal, this.closeModal, this.minusItem, this.plusItem, this.deleteItem);
-        this.modal = new CartModel();
+        this.model = new CartModel();
 
 
         this.subscribe = subscribe;
-        this.subscribe("show-cart", this.showCart);
-        this.subscribe("addto-cart", this.addToCart);
+        this.subscribe('add-to-cart', this.addAnimalToCart);
+    }
+
+    addAnimalToCart = (data) => {
+        this.model.addAnimalToCart(data);
+        this.setCountCounter();
+    }
+
+    setCountCounter = () => {
+        this.view.setCartCounter(this.model.cartCounter);
     }
 
     showModal = () => {
-        this.view.show();
+        this.view.show(this.model.currentCartAnimals);
     }
 
     closeModal = () => {
         this.view.close();
     }
 
-    minusItem = () => {
-        
+    minusItem = (data) => {
+        this.model.minusAnimalFromCartBtn(data);
+        this.setCountCounter();
+        this.view.renderCart(this.model.currentCartAnimals);
     }
 
-    plusItem = () => {
-        
+    plusItem = (data) => {
+        this.model.plusAnimalToCartBtn(data);
+        this.setCountCounter();
+        this.view.renderCart(this.model.currentCartAnimals);
     }
 
-    deleteItem = () => {
-        
+    deleteItem = (data) => {
+        this.model.deleteAnimalItemFromCartBtn(data);
+        this.setCountCounter();
+        this.view.renderCart(this.model.currentCartAnimals);
     }
-
-
-
-
-
-
-    // addToCart = (el)  => {
-    //     this.view.addToCart(el);
-    // }
-
-       
-
 }
+

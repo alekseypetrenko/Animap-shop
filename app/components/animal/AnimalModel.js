@@ -22,8 +22,7 @@ export class AnimalModel {
             });
             this.currentAnimals = this.animals;
             this.handleLoad(this.getPaginationData());
-            // this.checkCartStorage();
-            
+                        
         })
         xhr.open("GET", this.link);
         xhr.send();
@@ -51,7 +50,6 @@ export class AnimalModel {
         } else {
             this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
         }
-        //this.handleSessionStorage(id);
         return this.getPaginationData();
     }
 
