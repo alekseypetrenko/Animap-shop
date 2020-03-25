@@ -6,12 +6,12 @@ export class SearchFilterController {
         this.notify = notify;
     }
 
-    handleSearch = () => {
+    handleSearch = () => {//search animals by breed
         const data = this.view.searchValue;
         this.notify("search", data);
     }
 
-    handleFilter = (el) => {
+    handleFilter = (el) => {// filter animals by species
         const data = el.target.id;
         this.notify("filter", data);
     }

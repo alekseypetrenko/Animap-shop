@@ -6,7 +6,7 @@ export class DetailsView {
         $(this.modal).on('hidden.bs.modal', closeListener);
     }
 
-    show(el) {      
+    show(el) {     
         this.modalTitle.innerHTML = el.breed;
         const modalBody = `
                 <img src="${el.image}" alt="Photo" class="center">
@@ -20,8 +20,7 @@ export class DetailsView {
                             </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-secondary">Add to cart</button>
+                    <button type="button" class="btn btn-outline-success d-block mx-auto" data-dismiss="modal">Close</button>
                 </div>
        
         `;

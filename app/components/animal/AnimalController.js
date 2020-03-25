@@ -17,36 +17,36 @@ export class AnimalController {
      
     }
 
-    handleLoadedAnimals = (arr) => {
+    handleLoadedAnimals = (arr) => {// render all animals
         this.view.renderAnimals(arr);
     }
 
-    search = (str) => {
+    search = (str) => {// search animals by breed
         const data = this.model.searchByBreed(str);
         this.view.renderAnimals(data);
     }
 
-    filter = (str) => {
+    filter = (str) => {// filter animals by species
         const data = this.model.filterBySpecies(str);
         this.view.renderAnimals(data);
     }
 
-    sort = (id) => {
+    sort = (id) => {// sort animals by price and age (ascending and descending)
         const data = this.model.sortByType(id);
         this.view.renderAnimals(data);
     }
 
-    pagination = (where) => {
+    pagination = (where) => {// page pagination
         const data = this.model.getPaginationData(where);
         this.view.renderAnimals(data);
     }
 
-    handleClickDetails = (id) => {
+    handleClickDetails = (id) => {// for "Details" btn
         const data = this.model.getAnimalId(id);
         this.notify("show-details", data);
     }
 
-    handleAddToCart = (id) => {
+    handleAddToCart = (id) => {// for "Add to cart" btn
         const data = this.model.getAnimalId(id);
         this.notify('add-to-cart', data);
     }

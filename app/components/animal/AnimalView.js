@@ -7,7 +7,7 @@ export class AnimalView {
         this.clickAddToCartTotalPriceListener = listenerTotalPrice;
     }
 
-    renderAnimals(arr) {
+    renderAnimals(arr) {// render all cards
         this.info.innerHTML = '';
         arr.forEach(elem => {
             this.info.appendChild(this.getAnimal(elem));
@@ -15,7 +15,7 @@ export class AnimalView {
         this.spiner.classList.add("d-none");
       }
     
-    getAnimal(el) {
+    getAnimal(el) {// render 1 card
         const card = document.createElement("div");
         card.classList.add("card-deck", "col", "mb-4");
         
@@ -46,7 +46,7 @@ export class AnimalView {
         return card;
     }
 
-    convertedDOB(el) {
+    convertedDOB(el) {// convert date for animals' age
         return `Age: ${el.age.yearsAge < 1 ? "" : el.age.yearsAge + " years "}
                      ${el.age.monthsAge < 1 ? "" : el.age.monthsAge + " month "}
                      ${el.age.daysAge < 1 ? "" : el.age.daysAge + " days"}`

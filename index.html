@@ -18,12 +18,13 @@
 <body>
 
   <header class="page-header">
+    <!-- Spinner -->
     <div class="spinner-grow text-important"
       style="position: absolute; top: 50%; left: 50%; margin-top: -1.5rem; margin-left: -1.5rem; width: 3rem; height: 3rem;"
       role="status">
       <span class="sr-only">Loading...</span>
     </div>
-
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
       <a class="navbar-brand" id="all-animals" href="#">ZooMarket</a>
 
@@ -31,6 +32,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -62,6 +64,7 @@
           </li>
         </ul>
       </div>
+
       <!-- Sort dropdown -->
       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle sort" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -80,7 +83,8 @@
       <form class="form-inline search" action="/action_page.php">
         <input class="form-control mr-sm-2 breed-search" type="text" placeholder="Search">
       </form>
-       <!-- Cart -->
+
+      <!-- Cart in navbar-->
       <div class="cart">
         <div class="cart-container">
           <i class="fas fa-cart-plus cart-icon"></i>
@@ -90,8 +94,8 @@
     </nav>
   </header>
 
-
   <main class="page-main">
+
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
       <li class="page-item">
@@ -108,7 +112,8 @@
     </div>
 
     <!-- Modal for details-->
-    <div class="modal fade modal-details" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-details" id="exampleModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -126,7 +131,7 @@
     <!-- Modal for cart-->
     <div class="modal fade  cart-modal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title-cart" id="cartModalLabel"></h5>
@@ -135,14 +140,39 @@
             </button>
           </div>
           <div class="modal-body-cart">
+            <!-- Animals in cart-->
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Сheckout</button>
-          </div>
+        
+        <div class="d-flex justify-content-end">
+          <h5>Total price: <span class="price text-success"></span></h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary">Сheckout</button>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Modal for notification-->
+  <div class="modal notification-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">NOTIFICATION</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You've already added this item to your cart. Please, choose another one.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   </main>
 

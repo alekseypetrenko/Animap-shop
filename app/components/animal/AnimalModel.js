@@ -9,7 +9,7 @@ export class AnimalModel {
         this.handleLoad = handleLoad;
     }
 
-    getAnimals() {
+    getAnimals() {// load data from JSON
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load", () => {
             const animals = JSON.parse(xhr.responseText);
@@ -28,7 +28,7 @@ export class AnimalModel {
         xhr.send();
     }
 
-    convertDate(el) {
+    convertDate(el) {// convert date for animals' age
         const diff = Date.now() - el.birth_date;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const yearsAge = Math.floor(days / 365);
@@ -99,7 +99,7 @@ export class AnimalModel {
         return this.currentAnimals.slice(from, to);
     }
 
-    getAnimalId(id) {
+    getAnimalId(id) {// for "Details" and "Add to cart" btn
         return this.currentAnimals.find(el => el.id === +id);
     }
 
