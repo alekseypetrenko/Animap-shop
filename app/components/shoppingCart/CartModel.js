@@ -22,5 +22,4 @@ export class CartModel {
     calcTotalPrice() {// calculate total price og items in cart
         return this.animalsCart.reduce((total, current) => total + current.price, 0);
     }
- 
 }

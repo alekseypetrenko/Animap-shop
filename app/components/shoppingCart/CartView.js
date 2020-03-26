@@ -1,6 +1,6 @@
 export class CartView {
 
-    constructor(showListener, closeListener, deleteItemListener) {
+    constructor(showListener, closeListener, deleteItemListener, orderListener) {
         this.modal = document.querySelector(".cart-modal");
         this.modalTitle = document.querySelector(".modal-title-cart");
         this.modalBody = document.querySelector(".modal-body-cart");
@@ -9,21 +9,24 @@ export class CartView {
         this.cartCounter = document.querySelector(".cart-counter");
         this.totalPrice = document.querySelector(".price");
 
-        this.cart.addEventListener("click", showListener);
-        $(this.modal).on('hidden.bs.modal', closeListener);
+        this.notificationModal = document.querySelector(".notification-modal");//notification when adding 1 item twice
+        this.orderBtn = document.querySelector(".btn-order");
+
         this.deleteItemListener = deleteItemListener;
 
-        this.notificationModal = document.querySelector(".notification-modal");
+        this.cart.addEventListener("click", showListener);
+        this.orderBtn.addEventListener("click", orderListener);
     }
 
     show(data, price) {
         this.renderCart(data, price);
-        $(this.modal).modal('show');
+        $(this.modal).modal('show');//bootstrap4 documentation show modal
     }
 
     close() {
         this.modalTitle.innerHTML = "";
         this.modalBody.innerHTML = "";
+        $(this.modal).modal('hide');//bootstrap4 documentation close modal
     }
 
     renderCart(data, totalPrice) {// render the whole cart

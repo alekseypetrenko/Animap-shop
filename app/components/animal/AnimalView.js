@@ -1,10 +1,9 @@
 export class AnimalView {
-    constructor(listenerDetails, listenerCart, listenerTotalPrice) {
+    constructor(listenerDetails, listenerCart) {
         this.info = document.querySelector(".info-animals");
         this.spiner = document.querySelector(".spinner-grow");
         this.clickDetailsListener = listenerDetails;
         this.clickAddToCartListener = listenerCart;
-        this.clickAddToCartTotalPriceListener = listenerTotalPrice;
     }
 
     renderAnimals(arr) {// render all cards

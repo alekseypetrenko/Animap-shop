@@ -116,8 +116,8 @@
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title-details" id="exampleModalLabel"></h5>
+          <div class="modal-header text-center">
+            <h5 class="modal-title-details w-100" id="exampleModalLabel"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -131,10 +131,10 @@
     <!-- Modal for cart-->
     <div class="modal fade  cart-modal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title-cart" id="cartModalLabel"></h5>
+          <div class="modal-header text-center">
+            <h5 class="modal-title-cart w-100" id="cartModalLabel"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -148,7 +148,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-secondary">Сheckout</button>
+          <button type="button" class="btn btn-outline-secondary btn-order">Сheckout</button>
         </div>
       </div>
     </div>
@@ -156,10 +156,10 @@
 
   <!-- Modal for notification-->
   <div class="modal notification-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">NOTIFICATION</h5>
+        <div class="modal-header text-center">
+          <h5 class="modal-title w-100">NOTIFICATION</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -173,6 +173,45 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal for order-->
+  <div class="modal fade modal-order" id="exampleModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title-order w-100" id="exampleModalLabel">ORDER SUBMIT FORM</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body-order mx-auto w-75">
+            <!-- Form for order-->
+            <form>
+              <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Name </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Anna" aria-label="userName" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon2">Email </span>
+                </div>
+                <input type="email" class="form-control" placeholder="name@example.com" aria-label="userEmail" aria-describedby="basic-addon2">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Phone</span>
+                </div>
+                <input type="tel" class="form-control" placeholder="+38(066)1111111" aria-label="UserPhone" aria-describedby="basic-addon3">
+              </div>
+              <button type="submit" class="btn btn-outline-success d-block mx-auto mb-3 mt-5">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 

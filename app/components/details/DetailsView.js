@@ -7,7 +7,7 @@ export class DetailsView {
     }
 
     show(el) {     
-        this.modalTitle.innerHTML = el.breed;
+        this.modalTitle.innerHTML = String(el.breed).toUpperCase();
         const modalBody = `
                 <img src="${el.image}" alt="Photo" class="center">
                             <ul class="list-group list-group-flush">
