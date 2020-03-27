@@ -134,7 +134,13 @@ img.center {
     border-color:red;
 }
 
+/* Modal notification */
+.notification-modal-body {
+    text-align: center;
+}
 
-
+.notification-modal-closebtn {
+    justify-content: center;
+}
 
 
