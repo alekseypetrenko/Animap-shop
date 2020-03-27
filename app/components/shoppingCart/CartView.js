@@ -13,9 +13,9 @@ export class CartView {
         this.orderBtn = document.querySelector(".btn-order");
 
         this.deleteItemListener = deleteItemListener;
-
         this.cart.addEventListener("click", showListener);
         this.orderBtn.addEventListener("click", orderListener);
+        this.closeListener = closeListener;
     }
 
     show(data, price) {
@@ -26,7 +26,7 @@ export class CartView {
     close() {
         this.modalTitle.innerHTML = "";
         this.modalBody.innerHTML = "";
-        $(this.modal).modal('hide');//bootstrap4 documentation close modal
+        $(this.modal).modal('hide');//bootstrap4 documentation close modal - close modal when opening order modal
     }
 
     renderCart(data, totalPrice) {// render the whole cart
@@ -67,9 +67,8 @@ export class CartView {
                         <button class="btn-delete-item btn btn-danger" id="${el.id}">X</button>
                     </td>
                 </tr>
-            </table>
-            
-        `;
+            </table>`;
+
         element.querySelector(".btn-delete-item").addEventListener("click", ev => {
             ev.preventDefault();
             this.deleteItemListener(el.id);

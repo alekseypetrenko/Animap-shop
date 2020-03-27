@@ -8,10 +8,10 @@ export class AnimalController {
         this.model.getAnimals();
 
         this.subscribe = subscribe;
-        this.subscribe("search", this.search);
-        this.subscribe("filter", this.filter);
-        this.subscribe("sort", this.sort);
-        this.subscribe("pagination", this.pagination);
+        this.subscribe("search", this.search);//subcribe for event from SearchFilterController
+        this.subscribe("filter", this.filter);//subcribe for event from SearchFilterController
+        this.subscribe("sort", this.sort);//subcribe for event from SortController
+        this.subscribe("pagination", this.pagination);//subcribe for event from PaginationController
 
         this.notify = notify;
      
@@ -22,18 +22,18 @@ export class AnimalController {
     }
 
     search = (str) => {// search animals by breed
-        const data = this.model.searchByBreed(str);
-        this.view.renderAnimals(data);
+        this.model.currentSearched = str;
+        this.view.renderAnimals(this.model.allFilters());
     }
 
-    filter = (str) => {// filter animals by species
-        const data = this.model.filterBySpecies(str);
-        this.view.renderAnimals(data);
+    filter = (id) => {// filter animals by species
+        this.model.currentFiltered = id;
+        this.view.renderAnimals(this.model.allFilters());
     }
 
     sort = (id) => {// sort animals by price and age (ascending and descending)
-        const data = this.model.sortByType(id);
-        this.view.renderAnimals(data);
+        this.model.currentSorted = id;
+        this.view.renderAnimals(this.model.allFilters());
     }
 
     pagination = (where) => {// page pagination

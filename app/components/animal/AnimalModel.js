@@ -1,10 +1,13 @@
 export class AnimalModel {
-    link = "data/data.json"
+    link = "data/data.json";
     animals = [];
     currentAnimals = [];
+    currentFiltered;// for filter func receives id from controller
+    currentSorted;// for sort func receives id from controller
+    currentSearched;// for search func receives str from controller
     paginationCount = 12;
     paginationPage = 1;
-    
+
     constructor(handleLoad) {
         this.handleLoad = handleLoad;
     }
@@ -22,7 +25,7 @@ export class AnimalModel {
             });
             this.currentAnimals = this.animals;
             this.handleLoad(this.getPaginationData());
-                        
+
         })
         xhr.open("GET", this.link);
         xhr.send();
@@ -40,43 +43,50 @@ export class AnimalModel {
         }
     }
 
-    filterBySpecies(id) {
-        if (id.toLowerCase() === "clear") {
+    filterBySpecies() {
+        if (!this.currentFiltered) return;// stop func if no currentFiltered
+        if (this.currentFiltered.toLowerCase() === "clear") {
             this.currentAnimals = this.animals;
         }
 
-        else if (id.toLowerCase() === "all") {
+        else if (this.currentFiltered.toLowerCase() === "all") {
             this.currentAnimals = this.animals;
         } else {
-            this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === id.toLowerCase());
+            this.currentAnimals = this.animals.filter(({ species }) => species.toLowerCase() === this.currentFiltered.toLowerCase());
         }
-        return this.getPaginationData();
+
+        return this.currentAnimals;
     }
 
-    searchByBreed(str) {
-        let searchedAnimals = [];
-        const reg = new RegExp(str, "i");
-        searchedAnimals = this.currentAnimals.filter(({ breed }) => reg.test(breed));
-        if (str === "") {
-            searchedAnimals = this.currentAnimals;
-            return this.getPaginationData();
-        } 
-        return searchedAnimals;
+    searchByBreed() {
+        if (!this.currentSearched) return;// stop func if no currentSearched
+        const reg = new RegExp(this.currentSearched, "i");
+        this.currentAnimals = this.currentAnimals.filter(({ breed }) => reg.test(breed));
+        return this.currentAnimals;
     }
 
-    sortByType(id) {
-        if (id === "price ascending") {
+    sortByType() {
+        if (!this.currentSorted) return;//stop func if no currentSorted
+        if (this.currentSorted === "price ascending") {
             this.currentAnimals = this.currentAnimals.sort((a, b) => a.price - b.price);
         }
-        if (id === "price descending") {
+        if (this.currentSorted === "price descending") {
             this.currentAnimals = this.currentAnimals.sort((a, b) => b.price - a.price);
         }
-        if (id === "age ascending") {
+        if (this.currentSorted === "age ascending") {
             this.currentAnimals = this.currentAnimals.sort((a, b) => b.birth_date - a.birth_date);
         }
-        if (id === "age descending") {
+        if (this.currentSorted === "age descending") {
             this.currentAnimals = this.currentAnimals.sort((a, b) => a.birth_date - b.birth_date);
         }
+        return this.currentAnimals;
+    }
+
+    allFilters() {// use all types of filters + pagination
+        this.currentAnimals = this.animals;
+        this.filterBySpecies();
+        this.searchByBreed();
+        this.sortByType();
         return this.getPaginationData();
     }
 
@@ -94,6 +104,7 @@ export class AnimalModel {
                 this.paginationPage = 1;
             }
         }
+
         const from = (this.paginationPage - 1) * this.paginationCount;
         const to = this.paginationPage * this.paginationCount;
         return this.currentAnimals.slice(from, to);

@@ -2,6 +2,7 @@ export class AnimalView {
     constructor(listenerDetails, listenerCart) {
         this.info = document.querySelector(".info-animals");
         this.spiner = document.querySelector(".spinner-grow");
+
         this.clickDetailsListener = listenerDetails;
         this.clickAddToCartListener = listenerCart;
     }
@@ -11,13 +12,14 @@ export class AnimalView {
         arr.forEach(elem => {
             this.info.appendChild(this.getAnimal(elem));
         });
+
         this.spiner.classList.add("d-none");
-      }
-    
+    }
+
     getAnimal(el) {// render 1 card
         const card = document.createElement("div");
         card.classList.add("card-deck", "col", "mb-4");
-        
+
         card.innerHTML = `
             <div class="card">
                 <img src="${el.image}" alt="Photo" class="center">
@@ -31,17 +33,18 @@ export class AnimalView {
                         <button type="button" class="btn btn-outline-secondary addto-cart-button data-id=${el.id}">Add to cart</button>
                         <button type="button" class="btn btn-outline-success details-button" data-id="${el.id}">&#128062;Details</button>
                     </div>
-            </div>` 
+            </div>`
 
         card.querySelector(".details-button").addEventListener("click", ev => {
             ev.preventDefault();
             this.clickDetailsListener(el.id);
         });
-        card.querySelector(".addto-cart-button").addEventListener("click", ev =>{
+        card.querySelector(".addto-cart-button").addEventListener("click", ev => {
             ev.preventDefault();
             this.clickAddToCartListener(el.id);
-            
+
         });
+
         return card;
     }
 

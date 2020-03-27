@@ -3,6 +3,10 @@ export class CartModel {
         this.animalsCart = JSON.parse(localStorage.getItem("cart")) || [];
     }
 
+    get cartCounter() {
+        return this.animalsCart.length;
+    }
+
     addToCart(animal) {// add 1 item to cart
         if (this.animalsCart.includes(animal)) {//check if animal has been already added to cart (true status)
             return [this.animalsCart, true];

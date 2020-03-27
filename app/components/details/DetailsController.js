@@ -4,7 +4,7 @@ export class DetailsController {
     constructor({ subscribe }) {
         this.view = new DetailsView();
         this.subscribe = subscribe;
-        this.subscribe("show-details", this.showModal);
+        this.subscribe("show-details", this.showModal);//subcribe for event from AnimalController
     }
 
     showModal = (el) => {

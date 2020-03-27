@@ -8,7 +8,7 @@ export class PaginationController {
 
     handlePagination = (el) => {
         const data = el.target.dataset.id;
-        this.notify("pagination", data);
+        this.notify("pagination", data);//notify AnimalController about changes
     }
 
 }

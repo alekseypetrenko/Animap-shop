@@ -144,7 +144,7 @@
           </div>
         
         <div class="d-flex justify-content-end">
-          <h5>Total price: <span class="price text-success"></span></h5>
+          <h5 class = "mr-3 mb-3">Total price: <span class="price text-success"></span></h5>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
@@ -192,21 +192,24 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">Name </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Anna" aria-label="userName" aria-describedby="basic-addon1">
+                <input type="text" name="name" class="form-control inp-order inp-order-name" placeholder="Anna" aria-label="userName" aria-describedby="basic-addon1" required>
+                <p> Invalid name</p>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon2">Email </span>
                 </div>
-                <input type="email" class="form-control" placeholder="name@example.com" aria-label="userEmail" aria-describedby="basic-addon2">
+                <input type="text" name="email" class="form-control inp-order inp-order-email" placeholder="name@example.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
+                <p> Invalid email</p>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Phone</span>
                 </div>
-                <input type="tel" class="form-control" placeholder="+38(066)1111111" aria-label="UserPhone" aria-describedby="basic-addon3">
+                <input type="text" name="phone" class="form-control inp-order inp-order-phone" placeholder="+38(066)1111111" aria-label="UserPhone" aria-describedby="basic-addon3" required>
+                <p> Invalid phone</p>
               </div>
-              <button type="submit" class="btn btn-outline-success d-block mx-auto mb-3 mt-5">Submit</button>
+              <button type="submit" class="btn btn-outline-success btn-submit-order d-block mx-auto mb-3 mt-5">Submit</button>
             </form>
           </div>
         </div>

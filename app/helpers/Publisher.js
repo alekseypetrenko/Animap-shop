@@ -9,7 +9,6 @@ export class Publisher {
             notify: this.notify,
             unsubscribe: this.unsubscribe
         };
-
     }
 
     subscribe = (event, callbackFunc) => {
