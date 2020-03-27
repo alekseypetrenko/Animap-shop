@@ -2,7 +2,7 @@ import { OrderView } from "./OrderView.js";
 import { OrderModel } from "./OrderModel.js";
 
 export class OrderController {
-    constructor({subscribe}) {
+    constructor({ subscribe }) {
         this.view = new OrderView(this.showModal, this.closeModal, this.handleValidation);
         this.model = new OrderModel();
 
@@ -18,9 +18,9 @@ export class OrderController {
         this.view.close();
     }
 
-    handleValidation = (input, regex) => {
-        input = this.view.inputField();
-        this.model.validate(input, regex[input.attributes.name.value]);
+    handleValidation = () => {
+        let data = this.view.inputsValue;
+        this.model.validate(data);
     }
 
     // handleMakeOrder = () => {

@@ -4,15 +4,20 @@ export class OrderView {
         this.modalTitleOrder = document.querySelector(".modal-title-order");
         this.modalBodyOrder = document.querySelector(".modal-body-order");
         this.submitBtn = document.querySelector(".btn-submit-order");
-        this.inputs = document.querySelectorAll(".inp-order");
-        // this.inputName = document.querySelector(".inp-order-name");
-        // this.inputEmail = document.querySelecto(".inp-order-email");
-        // this.inputPhone = document.querySelecto(".inp-order-phone");
+        this.inputName = document.querySelector(".inp-order-name");
+        this.inputEmail = document.querySelector(".inp-order-email");
+        this.inputPhone = document.querySelector(".inp-order-phone");
 
         this.submitBtn.addEventListener("click", listenerBtn);
-        this.inputs.forEach(el => el.addEventListener("input", listenerInput));
+
         this.showListener = showListener;
         this.closeListener = closeListener;
+
+        this.inputName.addEventListener("input", listenerInput);
+        this.inputEmail.addEventListener("input", listenerInput);
+        this.inputPhone.addEventListener("input", listenerInput);
+
+
     }
 
     show() {
@@ -24,18 +29,11 @@ export class OrderView {
         this.modalBodyOrder.innerHTML = "";
     }
 
-    inputField() {
-        return this.inputs.target.value;
+    get inputsValue() {
+        return [
+            this.inputName,
+            this.inputEmail,
+            this.inputPhone
+        ]
     }
-
 }
-
-//this.inputs.forEach(el => validate(el.target, input_fields[el.target.attributes.name.value]))
-
-// document.addEventListener('click', function(event) {
-
-//     if (event.target.dataset.counter != undefined) { // если есть атрибут...
-//       event.target.value++;
-//     }
-
-//   });

@@ -8,7 +8,7 @@ export class CartModel {
     }
 
     addToCart(animal) {// add 1 item to cart
-        if (this.animalsCart.includes(animal)) {//check if animal has been already added to cart (true status)
+        if (this.animalsCart.some(el => el.id === animal.id)) {//check if animal has been already added to cart (true status)
             return [this.animalsCart, true];
         } else {
             this.animalsCart.push(animal);
