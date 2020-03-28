@@ -3,7 +3,7 @@ import { CartModel } from "./CartModel.js";
 
 export class CartController {
     constructor({ subscribe, notify }) {
-        this.view = new CartView(this.showModal, this.closeModal, this.deleteItem, this.handleOrder);
+        this.view = new CartView(this.showModal, this.closeModal, this.deleteItem, this.sendOrderInfo);
         this.model = new CartModel();
 
         this.setCartCounter();
@@ -39,11 +39,11 @@ export class CartController {
         this.setCartCounter();
     }
 
-    handleOrder = () => {
+    sendOrderInfo = () => {
         this.closeModal();
-        const data = this.model.animalsCart;
+        const products = this.model.animalsCart;
         const totalPrice = this.model.calcTotalPrice();
-        this.notify('order', { data, totalPrice });//notify OrderController about changes
+        this.notify('cart-info', { products: products, totalPrice: totalPrice });//notify OrderController about changes
     }
 
     setCartCounter = () => {//number of elements in cart rendering in navbar
