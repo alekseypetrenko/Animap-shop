@@ -52,7 +52,7 @@ export class CartView {
             <table class="show-cart table">
                 <tr>
                     <td class="w-25"> 
-                    <img src="${el.image}" class="img-fluid" alt="Photo123">
+                    <img src="${el.image}" class="img-fluid" alt="Photo">
                     </td>
                     <td  class="w-25"> 
                         ${el.breed}
