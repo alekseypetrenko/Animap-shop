@@ -131,5 +131,10 @@ img.center {
     border-color: #36cc36;
 }
 .invalid {
-    border-color:red;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(241, 20, 4, 0.25);
+}
+
+.modal-dialog {
+    width: 100% !important;
 }
