@@ -8,7 +8,7 @@ export class OrderController {
 
         this.notify = notify;
         this.subscribe = subscribe;
-        this.subscribe('order', this.handleCartInfo);//subcribe for event from CartController and get cart info (products + totalPrice)
+        this.subscribe('order', this.showModal);//subcribe for event from CartController and get cart info (products + totalPrice)
 
     }
 
@@ -41,6 +41,4 @@ export class OrderController {
         this.items = data;
         this.totalPrice = totalPrice;
     }
-
-
 }
