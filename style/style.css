@@ -131,7 +131,16 @@ img.center {
     border-color: #36cc36;
 }
 .invalid {
-    border-color:orange;
+    border-color:red;
+}
+
+/* Modal notification */
+.notification-modal-body {
+    text-align: center;
+}
+
+.notification-modal-closebtn {
+    justify-content: center;
 }
 
 

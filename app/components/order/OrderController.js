@@ -20,9 +20,9 @@ export class OrderController {
         this.view.close();
     }
 
-    handleValidation = (input, regex) => {
-        input = this.view.inputValue;
-        this.model.validate(input, regex[input.attributes.name.value]);
+    handleValidation = () => {
+        let data = this.view.inputsValue;
+        this.model.validate(data);
     }
 
     handleOrderInfo = () => {
