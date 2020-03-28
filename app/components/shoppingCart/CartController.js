@@ -10,6 +10,7 @@ export class CartController {
 
         this.subscribe = subscribe;
         this.subscribe('add-to-cart', this.addAnimalToCart);//subcribe for event from AnimalController and get data for cart render
+        this.subscribe('clear-cart', this.clearCart);//subcribe for event from OrderController and get data for clear cart
         this.notify = notify;
 
     }
@@ -49,5 +50,12 @@ export class CartController {
     setCartCounter = () => {//number of elements in cart rendering in navbar
         this.view.renderCartCounter(this.model.cartCounter);
     };
+
+    clearCart = () => {
+        this.model.animalsCart = [];
+        this.view.renderCart(this.model.animalsCart, 0);
+        this.setCartCounter();
+        this.model.clearLocalStorage();
+    }
 }
 

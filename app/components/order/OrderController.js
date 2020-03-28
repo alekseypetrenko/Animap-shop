@@ -35,9 +35,14 @@ export class OrderController {
             totalPrice: this.cartInfo.totalPrice
         }
         this.model.saveOrder(data);
+        this.notify('clear-cart', null);//notify CartController about changes
     }
 
     handleCartInfo = (cart) => {
         this.cartInfo = cart;
+    }
+
+    clearCartInfo = (cart) => {
+        this.cleenCart = cart;
     }
 }
