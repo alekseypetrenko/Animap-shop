@@ -27,9 +27,9 @@ export class OrderController {
 
     handleOrderInfo = () => {
         const data = {
-            name: this.view.nameValue,
-            email: this.view.emailValue,
-            phone: this.view.phoneValue,
+            name: this.view.inputsValue[0].value,
+            email: this.view.inputsValue[1].value,
+            phone: this.view.inputsValue[2].value,
             products: this.items,
             totalPrice: this.totalPrice
         }
