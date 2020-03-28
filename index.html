@@ -140,19 +140,29 @@
             </button>
           </div>
           <div class="modal-body-cart">
-            <!-- Animals in cart-->
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Breed</th>
+                  <th scope="col">Species/gender</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody class="animals-in-cart">
+                <!-- Animals in cart -->
+              </tbody>
+            </table>
+            <h5 class = "mr-3 mb-3 text-center">Total price: <span class="price text-success"></span></h5>
           </div>
-        
-        <div class="d-flex justify-content-end">
-          <h5 class = "mr-3 mb-3">Total price: <span class="price text-success"></span></h5>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-secondary btn-order">Сheckout</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-secondary btn-order">Сheckout</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
   <!-- Modal for notification-->
   <div class="modal notification-modal" tabindex="-1" role="dialog">
@@ -193,21 +203,18 @@
                   <span class="input-group-text" id="basic-addon1">Name </span>
                 </div>
                 <input type="text" name="name" class="form-control inp-order inp-order-name" placeholder="Anna" aria-label="userName" aria-describedby="basic-addon1" required>
-                <p> Invalid name</p>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon2">Email </span>
                 </div>
                 <input type="text" name="email" class="form-control inp-order inp-order-email" placeholder="name@example.com" aria-label="userEmail" aria-describedby="basic-addon2" required>
-                <p> Invalid email</p>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">Phone</span>
                 </div>
                 <input type="text" name="phone" class="form-control inp-order inp-order-phone" placeholder="+38(066)1111111" aria-label="UserPhone" aria-describedby="basic-addon3" required>
-                <p> Invalid phone</p>
               </div>
               <button type="submit" class="btn btn-outline-success btn-submit-order d-block mx-auto mb-3 mt-5">Submit</button>
             </form>

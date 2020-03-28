@@ -2,12 +2,14 @@ import { OrderView } from "./OrderView.js";
 import { OrderModel } from "./OrderModel.js";
 
 export class OrderController {
-    constructor({subscribe}) {
-        this.view = new OrderView(this.showModal, this.closeModal, this.handleValidation);
+    constructor({ subscribe, notify }) {
+        this.view = new OrderView(this.showModal, this.closeModal, this.handleValidation, this.handleOrderInfo);
         this.model = new OrderModel();
 
+        this.notify = notify;
         this.subscribe = subscribe;
-        this.subscribe('order', this.showModal);//subcribe for event from CartController
+        this.subscribe('order', this.handleCartInfo);//subcribe for event from CartController and get cart info (products + totalPrice)
+
     }
 
     showModal = (el) => {
@@ -19,11 +21,26 @@ export class OrderController {
     }
 
     handleValidation = (input, regex) => {
-        input = this.view.inputField();
+        input = this.view.inputValue;
         this.model.validate(input, regex[input.attributes.name.value]);
     }
 
-    // handleMakeOrder = () => {
+    handleOrderInfo = () => {
+        const data = {
+            name: this.view.nameValue,
+            email: this.view.emailValue,
+            phone: this.view.phoneValue,
+            products: this.items,
+            totalPrice: this.totalPrice
+        }
+        this.model.saveOrder(data);
+        this.notify('orderInfo', this.model.order);
+    }
 
-    // }
+    handleCartInfo = ({ data, totalPrice }) => {
+        this.items = data;
+        this.totalPrice = totalPrice;
+    }
+
+
 }

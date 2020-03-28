@@ -1,5 +1,5 @@
 export class OrderView {
-    constructor(showListener, closeListener, listenerInput, listenerBtn) {
+    constructor(showListener, closeListener, listenerInput, listenerHandleOrder) {
         this.modalOrder = document.querySelector(".modal-order");
         this.modalTitleOrder = document.querySelector(".modal-title-order");
         this.modalBodyOrder = document.querySelector(".modal-body-order");
@@ -9,7 +9,10 @@ export class OrderView {
         // this.inputEmail = document.querySelecto(".inp-order-email");
         // this.inputPhone = document.querySelecto(".inp-order-phone");
 
-        this.submitBtn.addEventListener("click", listenerBtn);
+        this.submitBtn.addEventListener("click", addEventListener("click", ev => {
+            ev.preventDefault();
+            listenerHandleOrder;
+        }));
         this.inputs.forEach(el => el.addEventListener("input", listenerInput));
         this.showListener = showListener;
         this.closeListener = closeListener;
@@ -24,8 +27,8 @@ export class OrderView {
         this.modalBodyOrder.innerHTML = "";
     }
 
-    inputField() {
-        return this.inputs.target.value;
+    get inputValue() {
+        return this.inputs.value;
     }
 
 }

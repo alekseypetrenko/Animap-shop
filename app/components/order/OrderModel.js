@@ -1,5 +1,6 @@
 export class OrderModel {
     constructor() {
+        this.order = JSON.parse(localStorage.getItem('order')) || [];
         this.regex = {
             name: /^[A-Za-z]{3,12}$/, //3-12 characters: letters
             email: /^([A-Za-z\d\.-]+)@([A-Za-z\d-]+)\.([a-z]{2,8})$/, //letters, digits, dots, hyphens
@@ -10,6 +11,11 @@ export class OrderModel {
     validate (input, regex) {
       return regex.test(input.value) ? input.className = 'valid' : input.className = 'invalid';
     }
+
+    saveOrder(data) {
+        this.order.push(data);
+        localStorage.setItem('order', JSON.stringify(this.order));
+      }
     
     
 }

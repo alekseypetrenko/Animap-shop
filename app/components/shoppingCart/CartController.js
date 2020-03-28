@@ -9,7 +9,7 @@ export class CartController {
         this.setCartCounter();
 
         this.subscribe = subscribe;
-        this.subscribe('add-to-cart', this.addAnimalToCart);//subcribe for event from AnimalController
+        this.subscribe('add-to-cart', this.addAnimalToCart);//subcribe for event from AnimalController and get data for cart render
         this.notify = notify;
 
     }
@@ -24,7 +24,7 @@ export class CartController {
 
     addAnimalToCart = (animal) => {
         const cart = this.model.addToCart(animal);
-        if (cart[1]) {//chek if animal unique (has true status)
+        if (cart[1]) {//check if animal has been already added to cart (true status)
             this.view.renderNotification(cart[1]);
         }
         const totalPrice = this.model.calcTotalPrice();

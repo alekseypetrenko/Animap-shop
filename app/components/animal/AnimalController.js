@@ -8,8 +8,8 @@ export class AnimalController {
         this.model.getAnimals();
 
         this.subscribe = subscribe;
-        this.subscribe("search", this.search);//subcribe for event from SearchFilterController
-        this.subscribe("filter", this.filter);//subcribe for event from SearchFilterController
+        this.subscribe("search", this.search);//subcribe for event from SearchFilterController and get str for search by breed
+        this.subscribe("filter", this.filter);//subcribe for event from SearchFilterController 
         this.subscribe("sort", this.sort);//subcribe for event from SortController
         this.subscribe("pagination", this.pagination);//subcribe for event from PaginationController
 

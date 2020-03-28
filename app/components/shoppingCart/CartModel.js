@@ -8,7 +8,7 @@ export class CartModel {
     }
 
     addToCart(animal) {// add 1 item to cart
-        if (this.animalsCart.includes(animal)) {//check if animal has been already added to cart (true status)
+        if (this.animalsCart.find(item => animal.id === item.id)) {//check if animal has been already added to cart (true status)
             return [this.animalsCart, true];
         } else {
             this.animalsCart.push(animal);
@@ -17,7 +17,7 @@ export class CartModel {
         }
     }
 
-    removeFromCart(id) {// remove 1 item from cart
+    removeFromCart(id) {// remove 1 item from cart //id
         this.animalsCart = this.animalsCart.filter(animal => animal.id !== parseInt(id));
         localStorage.setItem("cart", JSON.stringify(this.animalsCart));
         return this.animalsCart;
