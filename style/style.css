@@ -172,3 +172,7 @@ img.center {
 .modal-dialog {
     width: 100% !important;
 }
+
+.table-body-orderHistory span {
+    font-weight: bold;
+}

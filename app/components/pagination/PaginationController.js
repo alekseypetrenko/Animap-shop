@@ -10,5 +10,4 @@ export class PaginationController {
         const data = el.target.dataset.id;
         this.notify("pagination", data);//notify AnimalController about changes
     }
-
 }

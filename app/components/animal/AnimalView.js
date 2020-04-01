@@ -53,6 +53,5 @@ export class AnimalView {
                      ${el.age.monthsAge < 1 ? "" : el.age.monthsAge + " month "}
                      ${el.age.daysAge < 1 ? "" : el.age.daysAge + " days"}`
     }
-
 }
 

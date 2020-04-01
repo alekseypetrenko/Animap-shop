@@ -14,7 +14,6 @@ export class AnimalController {
         this.subscribe("pagination", this.pagination);//subcribe for event from PaginationController
 
         this.notify = notify;
-     
     }
 
     handleLoadedAnimals = (arr) => {// render all animals

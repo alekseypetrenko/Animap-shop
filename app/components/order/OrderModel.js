@@ -17,7 +17,5 @@ export class OrderModel {
     saveOrder(data) {
         this.order.push(data);
         localStorage.setItem('order', JSON.stringify(this.order));
-      }
-    
-    
+    }
 }

@@ -1,17 +1,19 @@
 export class OrderHistoryView {
-    
+
     constructor(showListener, closeListener, deleteOrderListener) {
         this.modal = document.querySelector(".orderHistory-modal");
         this.modalTitle = document.querySelector(".modal-title-orderHistory");
         this.modalBody = document.querySelector(".modal-body-orderHistory");
         this.tableBody = document.querySelector(".table-body-orderHistory")
 
-        this.orderIcon = document.querySelector(".order-history-icon");
+        this.history = document.querySelector(".order-history");
         this.orderCounter = document.querySelector(".order-history-counter");
         this.totalPrice = document.querySelector(".order-history-price");
 
-        this.showListener = showListener;
+        this.history.addEventListener("click", showListener);
         this.closeListener = closeListener;
+        this.deleteOrderListener = deleteOrderListener;
+
     }
 
     show(data, price) {
@@ -36,29 +38,23 @@ export class OrderHistoryView {
     renderSingleOrder(el) {// render 1 order in orderHistory
         const element = document.createElement('tr');
         element.innerHTML = `
-            <td class="w-25"> 
-                ${el.name}
+            <td class="w-50"> 
+                <span>Name:</span> ${el.name}<br>
+                <span>Email:</span> ${el.email}<br>
+                <span>Phone:</span>${el.phone}<br>
             </td>
-            <td class="w-25"> 
-                ${el.email}
-            </td>
-            <td  class="w-25"> 
-                ${el.phone}
-            </td>
-            <td  class="w-25"> 
-                ${el.breed}
-            </td>
-            <td  class="w-25"> 
-                ${el.price} UAH
+            <td class="w-50"> 
+                <span>Breed:</span> ${el.products.map(el => el.breed)}<br>
+                <span>Price:</span>${el.totalPrice}
             </td>
             <td>
-                <button class="btn-delete-order btn btn-danger" id="${el.id}">X</button>
+                <button class="btn-delete-order btn btn-danger text-center" id="${el.name}">X</button>
             </td>
         `;
 
         element.querySelector(".btn-delete-order").addEventListener("click", ev => {
             ev.preventDefault();
-            deleteOrderListener(el.id);
+            this.deleteOrderListener(el.name);
         });
 
         return element;

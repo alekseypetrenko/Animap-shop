@@ -6,13 +6,12 @@ export class CartController {
         this.view = new CartView(this.showModal, this.closeModal, this.deleteItem, this.sendOrderInfo);
         this.model = new CartModel();
 
-        this.setCartCounter();
-
         this.subscribe = subscribe;
         this.subscribe('add-to-cart', this.addAnimalToCart);//subcribe for event from AnimalController and get data for cart render
         this.subscribe('clear-cart', this.clearCart);//subcribe for event from OrderController and get data for clear cart
         this.notify = notify;
 
+        this.setCartCounter();
     }
 
     showModal = () => {

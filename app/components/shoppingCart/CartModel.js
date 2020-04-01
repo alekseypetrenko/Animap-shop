@@ -27,7 +27,7 @@ export class CartModel {
         return this.animalsCart.reduce((total, current) => total + current.price, 0);
     }
 
-    clearLocalStorage(){//clear storage after making order
-        return localStorage.removeItem("cart");    
+    clearLocalStorage() {//clear storage after making order
+        return localStorage.removeItem("cart");
     }
 }

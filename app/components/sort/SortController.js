@@ -10,5 +10,4 @@ export class SortController {
         const data = el.target.id;
         this.notify("sort", data);//notify AnimalController about changes
     }
-
 }

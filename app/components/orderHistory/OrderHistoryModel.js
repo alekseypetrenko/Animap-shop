@@ -3,18 +3,22 @@ export class OrderHistoryModel {
         this.orderHistory = JSON.parse(localStorage.getItem('order')) || [];
     }
 
+    get orders() {
+        return JSON.parse(localStorage.getItem('order')) || [];
+    }
+
     get orderCounter() {
         return this.orderHistory.length;
     }
 
-    removeFromOrderHistory(id) {// remove 1 order from orderHistory
-        this.orderHistory = this.orderHistory.filter(animal => animal.id !== parseInt(id));
+    removeFromOrderHistory(name) {// remove 1 order from orderHistory
+        this.orderHistory = this.orderHistory.filter(el => el.name !== name);
         localStorage.setItem('order', JSON.stringify(this.orderHistory));
-        return this.animalsCart;
+        return this.orderHistory;
     }
 
     calcTotalPrice() {// calculate total price og items in cart
-        return this.orderHistory.reduce((total, current) => total + current.price, 0);
+        const price = JSON.parse(localStorage.getItem('order'));
+        return price.reduce((total, current) => total + current.totalPrice, 0);
     }
-
 }
