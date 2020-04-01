@@ -17,7 +17,7 @@ export class CartModel {
         }
     }
 
-    removeFromCart(id) {// remove 1 item from cart
+    removeFromCart(id) {// remove 1 item from cart //id
         this.animalsCart = this.animalsCart.filter(animal => animal.id !== parseInt(id));
         localStorage.setItem("cart", JSON.stringify(this.animalsCart));
         return this.animalsCart;
